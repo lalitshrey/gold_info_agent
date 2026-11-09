@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stock News Agent</title>
+  <!-- Tailwind via CDN (no build step) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="color-scheme" content="light dark">
+  <script>
+    let nseSymbols = [];
+    async function loadSymbols() {
+      try {
+        const res = await fetch('/static/nse_symbols.json');
+        if (res.ok) {
+          nseSymbols = await res.json();
+        }
+      } catch {}
+    }
+    document.addEventListener('DOMContentLoaded', loadSymbols);
+  </script>
+</head>
+<body class="min-h-screen bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+  <div class="max-w-6xl mx-auto p-4 md:p-8">
+    <header class="mb-6">
+      <h1 class="text-2xl md:text-3xl font-semibold">Stock News Agent</h1>
+      <p class="text-sm text-gray-600 dark:text-gray-400">Search Google News and Yahoo Finance with sentiment.</p>
+    </header>
+
+    <form class="bg-white dark:bg-gray-800 rounded-lg shadow p-4 md:p-6 mb-6" method="get" action="/">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
+        <label class="block">
+          <span class="block text-sm font-medium mb-1">Tickers (comma-separated)</span>
+          <input id="tickers-input" name="tickers" list="tickers-datalist" type="text" value="{{ tickers }}" placeholder="e.g., RELIANCE,TCS,INFY" class="w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 px-3 py-2" oninput="updateSuggestions(this)">
+          <datalist id="tickers-datalist"></datalist>
+          <script>
+            function updateSuggestions(el) {
+              const value = el.value;
+              const parts = value.split(',');
+              const current = parts[parts.length - 1].trim().toUpperCase();
+              const dl = document.getElementById('tickers-datalist');
+              dl.innerHTML = '';
+              if (!current) return;
+              const suggestions = nseSymbols.filter(s => s.symbol.startsWith(current)).slice(0, 20);
+              for (const s of suggestions) {
+                const opt = document.createElement('option');
+                opt.value = [...parts.slice(0, -1), s.symbol].filter(Boolean).join(',');
+                opt.label = s.name + ' (' + s.symbol + ')';
+                dl.appendChild(opt);
+              }
+            }
+          </script>
+        </label>
+        <label class="block">
+          <span class="block text-sm font-medium mb-1">Limit per source</span>
+          <input name="limit" type="number" min="1" max="100" value="{{ limit }}" class="w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 px-3 py-2">
+        </label>
+        <label class="block">
+          <span class="block text-sm font-medium mb-1">Days back (Google)</span>
+          <input name="days" type="number" min="1" max="30" value="{{ days }}" class="w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 px-3 py-2">
+        </label>
+        <div>
+          <button type="submit" class="inline-flex items-center justify-center rounded-md bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 w-full md:w-auto">Search</button>
+        </div>
+      </div>
+    </form>
+
+    {% if symbols %}
+      <div class="mb-3 text-sm text-gray-700 dark:text-gray-300">Showing results for: <span class="font-medium">{{ ", ".join(symbols) }}</span> ({{ articles|length }})</div>
+    {% endif %}
+
+    <div class="grid grid-cols-1 gap-4">
+      {% for a in articles %}
+      <article class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+        <div class="flex items-center justify-between gap-3">
+          <div class="text-xs text-gray-500 dark:text-gray-400">{{ a.published_india or "" }}</div>
+          <div class="text-xs px-2 py-1 rounded bg-gray-100 dark:bg-gray-700">{{ a.source }}</div>
+        </div>
+        <h2 class="mt-2 text-lg font-semibold">
+          {% if a.link %}
+            <a href="{{ a.link }}" target="_blank" rel="noopener noreferrer" class="hover:underline">{{ a.title }}</a>
+          {% else %}
+            {{ a.title }}
+          {% endif %}
+        </h2>
+        
+        <!-- {% if a.preview_first50 %}
+          <p class="mt-2 text-sm text-gray-700 dark:text-gray-300">{{ a.preview_first50 }}</p>
+        {% endif %} -->
+        {% if a.summary_first50 %}
+          <p class="mt-1 text-sm text-gray-700 dark:text-gray-300">{{ a.summary_first50 }}</p>
+        {% endif %}
+        <div class="mt-3 flex items-center gap-3 text-sm">
+          <div class="text-gray-600 dark:text-gray-300">Ticker: <span class="font-medium">{{ a.ticker }}</span></div>
+          {% if a.sentiment %}
+            {% set comp = a.sentiment.compound %}
+            {% if comp >= 0.05 %}
+              {% set badge = 'bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-300' %}
+            {% elif comp <= -0.05 %}
+              {% set badge = 'bg-red-100 text-red-800 dark:bg-red-900/40 dark:text-red-300' %}
+            {% else %}
+              {% set badge = 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200' %}
+            {% endif %}
+            <span class="px-2 py-0.5 rounded text-xs {{ badge }}">Sentiment: {{ '%.3f'|format(comp) }}</span>
+          {% endif %}
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+
+    {% if not articles and not tickers %}
+      <div class="text-gray-600 dark:text-gray-300">Enter tickers and click Search to view results.</div>
+    {% elif tickers and not articles %}
+      <div class="text-gray-600 dark:text-gray-300">No articles found. Try increasing days or limit.</div>
+    {% endif %}
+  </div>
+</body>
+</html>
+
+
+

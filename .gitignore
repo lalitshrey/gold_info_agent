@@ -1,0 +1,19 @@
+# Python environments and generated files
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# Local secrets and databases
+.env
+.env.*
+*.pem
+*.key
+*.db
+*.sqlite
+*.sqlite3
+
+# Separate projects and downloaded archives
+/AgentStack/
+/hierarchical_stock_agents-main/
+/hierarchical_stock_agents-main.zip

@@ -5,6 +5,7 @@ Precious Metals Dashboard
 A colorful dashboard that displays:
 - Gold price (COMEX) converted to INR per 10g
 - Silver price (COMEX) converted to INR per kg
+- Gold & Silver prices from Moneycontrol (INR)
 - USD/INR exchange rate
 
 Uses data from comexlive.org and moneycontrol.com
@@ -30,8 +31,9 @@ except ImportError:
 try:
     from gold_price_converter import convert_gold_price_usd_oz_to_inr_10g, add_duty_and_gst as gold_duty_gst
     from silver_price_converter import convert_silver_price_usd_oz_to_inr_kg, add_duty_and_gst as silver_duty_gst
-    from get_gold_silver_comexlive import get_gold_silver
+    from get_gold_silver_comexlive import get_gold_silver as get_comexlive_gold_silver
     from get_usdinr_moneycontrol import get_usdinr
+    from get_gold_silver_moneycontrol import get_gold_silver as get_mc_gold_silver
 except ImportError as e:
     print(f"Error: Missing required module. Ensure all modules are in the same folder.\n{e}")
     sys.exit(1)
@@ -81,9 +83,9 @@ def create_usdinr_panel(usdinr) -> Panel:
     return Panel(content, title="[bold blue]💵 Exchange Rate[/bold blue]", border_style="blue", box=box.ROUNDED)
 
 
-def create_gold_table(gold, rate) -> Table:
-    """Create a table showing gold prices."""
-    table = Table(title="🥇 [bold yellow]GOLD PRICES[/bold yellow]", box=box.ROUNDED, border_style="yellow")
+def create_comex_gold_table(gold, rate) -> Table:
+    """Create a table showing COMEX Gold prices."""
+    table = Table(title="🥇 [bold yellow]COMEX GOLD (USD → INR)[/bold yellow]", box=box.ROUNDED, border_style="yellow")
     
     table.add_column("Metric", style="cyan", justify="left")
     table.add_column("USD/oz", style="white", justify="right")
@@ -117,9 +119,9 @@ def create_gold_table(gold, rate) -> Table:
     return table
 
 
-def create_silver_table(silver, rate) -> Table:
-    """Create a table showing silver prices."""
-    table = Table(title="🥈 [bold cyan]SILVER PRICES[/bold cyan]", box=box.ROUNDED, border_style="cyan")
+def create_comex_silver_table(silver, rate) -> Table:
+    """Create a table showing COMEX Silver prices."""
+    table = Table(title="🥈 [bold cyan]COMEX SILVER (USD → INR)[/bold cyan]", box=box.ROUNDED, border_style="cyan")
     
     table.add_column("Metric", style="cyan", justify="left")
     table.add_column("USD/oz", style="white", justify="right")
@@ -153,12 +155,92 @@ def create_silver_table(silver, rate) -> Table:
     return table
 
 
-def create_change_panel(gold, silver) -> Panel:
-    """Create a panel showing price changes."""
+def create_moneycontrol_gold_panel(gold_mc) -> Panel:
+    """Create a panel showing Moneycontrol Gold prices."""
+    content = Text()
+    content.append("💰 Gold (Moneycontrol)", style="bold yellow")
+    content.append("\n\nCurrent: ", style="dim")
+    content.append(f"₹{gold_mc.last:,.2f}", style="bold green")
+    content.append(" / 10g", style="dim")
+    
+    # Price change
+    if gold_mc.change is not None:
+        change_style = "green" if gold_mc.change >= 0 else "red"
+        arrow = "▲" if gold_mc.change >= 0 else "▼"
+        content.append(f"\n\nChange: ", style="dim")
+        content.append(f"{arrow} ₹{gold_mc.change:+.2f}", style=change_style)
+        if gold_mc.change_pct is not None:
+            content.append(f" ({gold_mc.change_pct:+.2f}%)", style=change_style)
+    
+    # High/Low
+    if gold_mc.high is not None or gold_mc.low is not None:
+        content.append(f"\n\nHigh/Low: ", style="dim")
+        if gold_mc.high:
+            content.append(f"₹{gold_mc.high:,.2f}", style="green")
+        if gold_mc.high and gold_mc.low:
+            content.append(" / ", style="dim")
+        if gold_mc.low:
+            content.append(f"₹{gold_mc.low:,.2f}", style="red")
+    
+    # Open/Prev Close
+    if gold_mc.open_ is not None or gold_mc.prev_close is not None:
+        content.append(f"\n\nOpen/Prev: ", style="dim")
+        if gold_mc.open_:
+            content.append(f"₹{gold_mc.open_:,.2f}", style="cyan")
+        if gold_mc.open_ and gold_mc.prev_close:
+            content.append(" / ", style="dim")
+        if gold_mc.prev_close:
+            content.append(f"₹{gold_mc.prev_close:,.2f}", style="cyan")
+    
+    return Panel(content, title="[bold yellow]🏪 Moneycontrol Gold[/bold yellow]", border_style="yellow", box=box.ROUNDED)
+
+
+def create_moneycontrol_silver_panel(silver_mc) -> Panel:
+    """Create a panel showing Moneycontrol Silver prices."""
+    content = Text()
+    content.append("🥈 Silver (Moneycontrol)", style="bold cyan")
+    content.append("\n\nCurrent: ", style="dim")
+    content.append(f"₹{silver_mc.last:,.2f}", style="bold green")
+    content.append(" / kg", style="dim")
+    
+    # Price change
+    if silver_mc.change is not None:
+        change_style = "green" if silver_mc.change >= 0 else "red"
+        arrow = "▲" if silver_mc.change >= 0 else "▼"
+        content.append(f"\n\nChange: ", style="dim")
+        content.append(f"{arrow} ₹{silver_mc.change:+.2f}", style=change_style)
+        if silver_mc.change_pct is not None:
+            content.append(f" ({silver_mc.change_pct:+.2f}%)", style=change_style)
+    
+    # High/Low
+    if silver_mc.high is not None or silver_mc.low is not None:
+        content.append(f"\n\nHigh/Low: ", style="dim")
+        if silver_mc.high:
+            content.append(f"₹{silver_mc.high:,.2f}", style="green")
+        if silver_mc.high and silver_mc.low:
+            content.append(" / ", style="dim")
+        if silver_mc.low:
+            content.append(f"₹{silver_mc.low:,.2f}", style="red")
+    
+    # Open/Prev Close
+    if silver_mc.open_ is not None or silver_mc.prev_close is not None:
+        content.append(f"\n\nOpen/Prev: ", style="dim")
+        if silver_mc.open_:
+            content.append(f"₹{silver_mc.open_:,.2f}", style="cyan")
+        if silver_mc.open_ and silver_mc.prev_close:
+            content.append(" / ", style="dim")
+        if silver_mc.prev_close:
+            content.append(f"₹{silver_mc.prev_close:,.2f}", style="cyan")
+    
+    return Panel(content, title="[bold cyan]🏪 Moneycontrol Silver[/bold cyan]", border_style="cyan", box=box.ROUNDED)
+
+
+def create_comex_change_panel(gold, silver) -> Panel:
+    """Create a panel showing COMEX price changes."""
     content = Text()
     
     # Gold change
-    content.append("Gold: ", style="bold yellow")
+    content.append("Gold (COMEX): ", style="bold yellow")
     if gold.change is not None:
         change_style = "green" if gold.change >= 0 else "red"
         arrow = "▲" if gold.change >= 0 else "▼"
@@ -172,7 +254,7 @@ def create_change_panel(gold, silver) -> Panel:
     content.append("\n")
     
     # Silver change
-    content.append("Silver: ", style="bold cyan")
+    content.append("Silver (COMEX): ", style="bold cyan")
     if silver.change is not None:
         change_style = "green" if silver.change >= 0 else "red"
         arrow = "▲" if silver.change >= 0 else "▼"
@@ -183,26 +265,77 @@ def create_change_panel(gold, silver) -> Panel:
     else:
         content.append("N/A", style="dim")
     
-    return Panel(content, title="[bold white]📊 Daily Change[/bold white]", border_style="magenta", box=box.ROUNDED)
+    return Panel(content, title="[bold white]📊 COMEX Daily Change[/bold white]", border_style="magenta", box=box.ROUNDED)
 
 
-def create_summary_table(gold, silver, rate) -> Table:
-    """Create a summary table with key prices."""
+def create_comparison_table(gold_comex, gold_mc, silver_comex, silver_mc, rate) -> Table:
+    """Create a comparison table between COMEX and Moneycontrol prices."""
+    table = Table(title="📋 [bold white]PRICE COMPARISON[/bold white]", box=box.DOUBLE, border_style="green")
+    
+    table.add_column("Metal", style="bold", justify="center")
+    table.add_column("COMEX", style="bold yellow", justify="center")
+    table.add_column("Moneycontrol", style="bold cyan", justify="center")
+    table.add_column("Difference", style="bold", justify="center")
+    
+    # Gold comparison
+    gold_comex_inr = convert_gold_price_usd_oz_to_inr_10g(gold_comex.last, rate, use_troy=True)
+    gold_comex_final = gold_duty_gst(gold_comex_inr)
+    
+    if gold_mc:
+        diff = gold_mc.last - gold_comex_final
+        diff_pct = (diff / gold_comex_final) * 100 if gold_comex_final else 0
+        diff_style = "green" if diff >= 0 else "red"
+        diff_prefix = "+" if diff >= 0 else ""
+        table.add_row(
+            "🥇 Gold",
+            f"₹{gold_comex_final:,.2f}",
+            f"₹{gold_mc.last:,.2f}",
+            f"[{diff_style}]{diff_prefix}₹{diff:,.2f} ({diff_pct:+.1f}%)[/]"
+        )
+    else:
+        table.add_row("🥇 Gold", f"₹{gold_comex_final:,.2f}", "N/A", "N/A")
+    
+    # Silver comparison
+    silver_comex_inr = convert_silver_price_usd_oz_to_inr_kg(silver_comex.last, rate, use_troy=True)
+    silver_comex_final = silver_duty_gst(silver_comex_inr)
+    
+    if silver_mc:
+        diff = silver_mc.last - silver_comex_final
+        diff_pct = (diff / silver_comex_final) * 100 if silver_comex_final else 0
+        diff_style = "green" if diff >= 0 else "red"
+        diff_prefix = "+" if diff >= 0 else ""
+        table.add_row(
+            "🥈 Silver",
+            f"₹{silver_comex_final:,.2f}",
+            f"₹{silver_mc.last:,.2f}",
+            f"[{diff_style}]{diff_prefix}₹{diff:,.2f} ({diff_pct:+.1f}%)[/]"
+        )
+    else:
+        table.add_row("🥈 Silver", f"₹{silver_comex_final:,.2f}", "N/A", "N/A")
+    
+    return table
+
+
+def create_summary_table(gold_comex, silver_comex, gold_mc, silver_mc, rate) -> Table:
+    """Create a summary table with key prices from both sources."""
     table = Table(title="📋 [bold white]PRICE SUMMARY[/bold white]", box=box.DOUBLE, border_style="green")
     
     table.add_column("Metal", style="bold", justify="center")
-    table.add_column("Current Price", style="bold green", justify="center")
+    table.add_column("COMEX (After Tax)", style="bold yellow", justify="center")
+    table.add_column("Moneycontrol", style="bold cyan", justify="center")
     table.add_column("Unit", style="dim", justify="center")
     
-    # Gold final price
-    gold_inr = convert_gold_price_usd_oz_to_inr_10g(gold.last, rate, use_troy=True)
-    gold_final = gold_duty_gst(gold_inr)
-    table.add_row("🥇 Gold", f"₹{gold_final:,.2f}", "per 10 grams")
+    # COMEX Gold final price
+    gold_comex_inr = convert_gold_price_usd_oz_to_inr_10g(gold_comex.last, rate, use_troy=True)
+    gold_comex_final = gold_duty_gst(gold_comex_inr)
+    mc_gold = f"₹{gold_mc.last:,.2f}" if gold_mc else "N/A"
+    table.add_row("🥇 Gold", f"₹{gold_comex_final:,.2f}", mc_gold, "per 10 grams")
     
-    # Silver final price
-    silver_inr = convert_silver_price_usd_oz_to_inr_kg(silver.last, rate, use_troy=True)
-    silver_final = silver_duty_gst(silver_inr)
-    table.add_row("🥈 Silver", f"₹{silver_final:,.2f}", "per kg")
+    # COMEX Silver final price
+    silver_comex_inr = convert_silver_price_usd_oz_to_inr_kg(silver_comex.last, rate, use_troy=True)
+    silver_comex_final = silver_duty_gst(silver_comex_inr)
+    mc_silver = f"₹{silver_mc.last:,.2f}" if silver_mc else "N/A"
+    table.add_row("🥈 Silver", f"₹{silver_comex_final:,.2f}", mc_silver, "per kg")
     
     return table
 
@@ -234,7 +367,14 @@ def main() -> None:
             usdinr = get_usdinr()
             
             console.log("[yellow]Fetching Gold & Silver from COMEX...[/yellow]")
-            gold, silver = get_gold_silver()
+            gold_comex, silver_comex = get_comexlive_gold_silver()
+            
+            console.log("[cyan]Fetching Gold & Silver from Moneycontrol...[/cyan]")
+            try:
+                gold_mc, silver_mc = get_mc_gold_silver()
+            except Exception as e:
+                console.log(f"[yellow]Could not fetch Moneycontrol prices: {e}[/yellow]")
+                gold_mc, silver_mc = None, None
             
         except Exception as e:
             console.print(f"[bold red]Error fetching data:[/bold red] {e}")
@@ -242,36 +382,54 @@ def main() -> None:
     
     rate = usdinr.rate
     
-    # Display USD/INR and Change panels side by side
+    # Display USD/INR and COMEX Change panels side by side
     console.print(Columns([
         create_usdinr_panel(usdinr),
-        create_change_panel(gold, silver)
+        create_comex_change_panel(gold_comex, silver_comex)
     ], equal=True, expand=True))
     console.print()
     
-    # Display Gold and Silver tables side by side
+    # Display COMEX Gold and Silver tables side by side
     console.print(Columns([
-        create_gold_table(gold, rate),
-        create_silver_table(silver, rate)
+        create_comex_gold_table(gold_comex, rate),
+        create_comex_silver_table(silver_comex, rate)
     ], equal=True, expand=True))
     console.print()
     
-    # Summary table
-    console.print(create_summary_table(gold, silver, rate))
+    # Display Moneycontrol Gold and Silver panels side by side
+    if gold_mc or silver_mc:
+        mc_panels = []
+        if gold_mc:
+            mc_panels.append(create_moneycontrol_gold_panel(gold_mc))
+        if silver_mc:
+            mc_panels.append(create_moneycontrol_silver_panel(silver_mc))
+        
+        if mc_panels:
+            console.print(Columns(mc_panels, equal=True, expand=True))
+            console.print()
+    
+    # Display comparison table
+    if gold_mc or silver_mc:
+        console.print(create_comparison_table(gold_comex, gold_mc, silver_comex, silver_mc, rate))
+        console.print()
+    
+    # Display summary table
+    console.print(create_summary_table(gold_comex, silver_comex, gold_mc, silver_mc, rate))
     console.print()
     
     # Footer
     console.print(create_footer())
     
     # Last trade time info
-    if gold.last_trade or silver.last_trade:
+    if gold_comex.last_trade or silver_comex.last_trade:
         console.print()
-        console.print("[dim]Last Trade Times:[/dim]")
-        if gold.last_trade:
-            console.print(f"  [yellow]Gold:[/yellow] {gold.last_trade}")
-        if silver.last_trade:
-            console.print(f"  [cyan]Silver:[/cyan] {silver.last_trade}")
+        console.print("[dim]COMEX Last Trade Times:[/dim]")
+        if gold_comex.last_trade:
+            console.print(f"  [yellow]Gold:[/yellow] {gold_comex.last_trade}")
+        if silver_comex.last_trade:
+            console.print(f"  [cyan]Silver:[/cyan] {silver_comex.last_trade}")
 
 
 if __name__ == "__main__":
     main()
+

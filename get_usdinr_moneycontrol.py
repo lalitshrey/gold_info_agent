@@ -9,6 +9,7 @@ Source: https://www.moneycontrol.com/markets/currencies/usd-inr/
 
 from __future__ import annotations
 
+import json
 import re
 from dataclasses import dataclass
 from typing import Any
@@ -67,6 +68,101 @@ def _fetch_html() -> str:
         r = client.get(URL, headers={"User-Agent": USER_AGENT})
         r.raise_for_status()
         return r.text
+
+
+def _extract_via_next_data(html: str) -> dict[str, float] | None:
+    """Extract quote data from Moneycontrol's embedded Next.js state."""
+    match = re.search(
+        r'<script\b[^>]*\bid=["\']__NEXT_DATA__["\'][^>]*>(.*?)</script\s*>',
+        html,
+        re.I | re.S,
+    )
+    if not match:
+        return None
+    try:
+        page_data = json.loads(match.group(1))
+    except json.JSONDecodeError:
+        return None
+
+    if not isinstance(page_data, dict):
+        return None
+    props = page_data.get("props", {})
+    if not isinstance(props, dict):
+        return None
+    page_props = props.get("pageProps", {})
+    if not isinstance(page_props, dict):
+        return None
+    consumption = page_props.get("consumptionData", {})
+    if not isinstance(consumption, dict):
+        return None
+    quote = consumption.get("stockData", {})
+    technical = consumption.get("technicalData", {})
+    if not isinstance(quote, dict) or not isinstance(technical, dict):
+        return None
+
+    def positive_value(data: dict[str, Any], key: str) -> float | None:
+        try:
+            value = float(data[key])
+        except (KeyError, TypeError, ValueError):
+            return None
+        return value if value > 0 else None
+
+    live_rate = positive_value(quote, "lastPrice")
+    technical_rate = positive_value(technical, "close")
+    rate = live_rate or technical_rate
+    if rate is None:
+        return None
+
+    reference = quote if live_rate is not None else technical
+    previous_close = positive_value(
+        reference, "prevClose" if live_rate is not None else "pclose"
+    )
+    if previous_close is None:
+        previous_close = positive_value(
+            technical if live_rate is not None else quote,
+            "pclose" if live_rate is not None else "prevClose",
+        )
+
+    data = {"rate": rate}
+    for output_key, quote_key, technical_key in (
+        ("open", "openPrice", "open"),
+        ("high", "highPrice", "high"),
+        ("low", "lowPrice", "low"),
+    ):
+        value = positive_value(reference, quote_key)
+        if value is None:
+            value = positive_value(technical, technical_key)
+        if value is not None:
+            data[output_key] = value
+
+    if previous_close is not None:
+        data["prev_close"] = previous_close
+    if live_rate is not None:
+        for output_key, quote_key in (("bid", "bidPrice"), ("ask", "askPrice")):
+            value = positive_value(quote, quote_key)
+            if value is not None:
+                data[output_key] = value
+
+    change = None
+    change_pct = None
+    if live_rate is not None:
+        try:
+            change = float(quote["change"])
+        except (KeyError, TypeError, ValueError):
+            pass
+        try:
+            change_pct = float(quote["perChange"])
+        except (KeyError, TypeError, ValueError):
+            pass
+    if change is None and previous_close is not None:
+        change = rate - previous_close
+    if change_pct is None and previous_close:
+        change_pct = change / previous_close * 100 if change is not None else None
+    if change is not None:
+        data["change"] = change
+    if change_pct is not None:
+        data["change_pct"] = change_pct
+    return data
 
 
 def _extract_via_regex(html: str) -> dict[str, float] | None:
@@ -163,11 +259,13 @@ def get_usdinr() -> UsdInrQuote:
         RuntimeError: If fetch or parse fails.
     """
     html = _fetch_html()
-    data: dict[str, float] | None = None
+    data = _extract_via_next_data(html)
 
-    if BeautifulSoup is not None:
+    if not data or "rate" not in data:
+        data = None
+    if data is None and BeautifulSoup is not None:
         data = _extract_via_bs4(html)
-    if data is None:
+    if not data or "rate" not in data:
         data = _extract_via_regex(html)
 
     if not data or "rate" not in data:

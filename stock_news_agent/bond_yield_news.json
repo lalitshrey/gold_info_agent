@@ -1,0 +1,571 @@
+{
+  "agent": "us_bond_yield_news_agent",
+  "fetched_at": "2026-09-28T18:44:55.199273+00:00",
+  "count": 62,
+  "articles": [
+    {
+      "title": "Stock Market Today: Treasury Yields Climb to Fresh Highs; Oil Pares Gains - wsj.com",
+      "summary": "Stock Market Today: Treasury Yields Climb to Fresh Highs; Oil Pares Gains  wsj.com",
+      "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNdXE5MUh0WU03bjJHMmlXVGN2Y2hTVnAxNzN0SUVLN3lFTHJoOTdlcmxwMlhVeWJ2M19RZXpzaTc1cE5JdnRYN0lHaFNWd0hMWEtzSVBIcG8tbkN0X2xoWmJfNUFELWY2dzJuYklxUlFRVU56eFV0Q0xSUnNZWktFdlZZc2t5UVU?oc=5",
+      "source": "Google News",
+      "query": "US bond yield",
+      "published": "2026-09-28T18:00:00+00:00",
+      "fetched_at": "2026-09-28T18:44:59.295707+00:00"
+    },
+    {
+      "title": "Stock Market Today: Dow, S&P 500 and Nasdaq drop as tech stocks slide and Treasury yields jump - MarketWatch",
+      "summary": "Stock Market Today: Dow, S&P 500 and Nasdaq drop as tech stocks slide and Treasury yields jump  MarketWatch",
+      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOclp1bUNiWV9CdU16Sk5IMVRPMnF5RWtUMVpjZjlFQTFraER4aHdUQ2Y0MHUwb3BRN2VOUmZkd2Q5WmI4NTJRaDY1SDVLTHk3UXlla0NQbll5QTY2d2lZb2p4RFhOdVIxXzhQSFFJSjZxOXpTYVJiS2JDbFpFenNJNUk5d2FwTDE0V1FaNDRHNVZiV3YzbF91eTEwcjJraUZmNlFiQ0RGSDk0eG1UY25xb2xEY1ctZw?oc=5",
+      "source": "Google News",
+      "query": "US Treasury yield",
+      "published": "2026-09-28T17:50:00+00:00",
+      "fetched_at": "2026-09-28T18:44:56.300497+00:00"
+    },
+    {
+      "title": "Stocks fall to start the week as Treasury yields rise once again: Live updates - CNBC",
+      "summary": "Stocks fall to start the week as Treasury yields rise once again: Live updates  CNBC",
+      "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBfcHBSWXRJblRwTG9LU2FTa2padU81clRCNUE5aVFMSHRsMEVXNWVKd1RINFM2VjhCSFNyOUVEVTBFTkgxeG5NSVBPWXZnWkE5Zi1fWTE1c042R2diaGNaUG52Qm1Zbjc5TVlSdTRWRlFKQ21laXJF0gF8QVVfeXFMUF9sSmc0eVlfc0psUWhFVUc3WVNwWFZlSldzSUtXamRDd0VKQTRqRjMxSWNGSEdTZDJBWEVtS0JkVThUV1I5cVFCNHV4UjZxQVcwR09qRnRRVHBFeTR6Qk84WEY5Y05vZlNZNU5NQnYxV0ZTSlJsSi1VNkQtVw?oc=5",
+      "source": "Google News",
+      "query": "US Treasury yield",
+      "published": "2026-09-28T17:24:53+00:00",
+      "fetched_at": "2026-09-28T18:44:56.300567+00:00"
+    },
+    {
+      "title": "Why the historic US bond sell-off is getting even worse - Business Insider",
+      "summary": "Why the historic US bond sell-off is getting even worse  Business Insider",
+      "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxQV3pVX1JCZ1RwSWNWdFlZY1dGTWppS3dvX3V3X2hadkgyR1AzZmN1N3RBZlRUaTREdXBKZXJiX2EyS1pEVld2SFhJanpFOW5meGlIdzBSZVBMazA3Z2VBOFVxbWc5bmF0Yl8zWjVMdi1FZGIycGxydG9XRmtrOHFQcWJSQVlqbk1SVDBFRWtJbERiS2Y3RURvYS1rY0x6Zw?oc=5",
+      "source": "Google News",
+      "query": "2 year Treasury yield",
+      "published": "2026-09-28T16:41:03+00:00",
+      "fetched_at": "2026-09-28T18:44:57.472953+00:00"
+    },
+    {
+      "title": "US 2-Year Treasury Yield Rises to 4.952%, Highest Since May 2024 - bloomingbit",
+      "summary": "US 2-Year Treasury Yield Rises to 4.952%, Highest Since May 2024  bloomingbit",
+      "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE52TlFWTUZqU3ppU2Q5R0JwdGpwX0R3TF90TFdnZ2RsN05NOXFSWjdNS0tkMFRGMUFfdnJwVlJOY0pQYlJDVFkzM3F0UFVnXzlkSWhlaA?oc=5",
+      "source": "Google News",
+      "query": "2 year Treasury yield",
+      "published": "2026-09-28T16:21:27+00:00",
+      "fetched_at": "2026-09-28T18:44:57.473173+00:00"
+    },
+    {
+      "title": "Selloff in U.S., European Government Bonds Deepens - wsj.com",
+      "summary": "Selloff in U.S., European Government Bonds Deepens  wsj.com",
+      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNMGxQVnl5Mmpzd19HVGRkb21NSkFUMHlha3pSdms1SVdkbk1DZVN3T2FYN1gxNjZYbzYtYnB1eUp4bHM5RGVDM0JCZGlkejhvWjdkekZjSVFUQmVmVHN4bEhhMVFydTlGOFNMX1kydUkzY2VZMkdoS1BLUE1kWllfXzE4OG1UckpGZV84VUdESDJVdGVvTE4w?oc=5",
+      "source": "Google News",
+      "query": "US Treasury yield",
+      "published": "2026-09-28T16:21:00+00:00",
+      "fetched_at": "2026-09-28T18:44:56.300389+00:00"
+    },
+    {
+      "title": "Watch Bond Yields Threaten AI Capex, US Consumer, Man Group's Hooper Warns - Bloomberg.com",
+      "summary": "Watch Bond Yields Threaten AI Capex, US Consumer, Man Group's Hooper Warns  Bloomberg.com",
+      "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNdDVNdm14OC1yVDZIaGp4LU9yNld0WmItbVhFVElHODJWTFJKdjNLRk1lcW1aQ0pROFpmVkNvVnk1Z1g0X18tck5tVmQ0ZjZqb3BZVEZLTzVrNXpmdW9XWFFkSWUteDJ6Z21TNjg3c0xKT2tTeGZPWllWaDEwUmN0cklSN2ZwWExhRDRlMjBQbERaMmpSMlJBTFdqTE1zZWlMYUY2TlptaVdvUQ?oc=5",
+      "source": "Google News",
+      "query": "US bond yield",
+      "published": "2026-09-28T16:20:40+00:00",
+      "fetched_at": "2026-09-28T18:44:59.296029+00:00"
+    },
+    {
+      "title": "U.S. 10 Year Treasury tops 5.25% as yields continue to climb - Seeking Alpha",
+      "summary": "U.S. 10 Year Treasury tops 5.25% as yields continue to climb  Seeking Alpha",
+      "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPQUxfQU9DWEpadVhBbDZsNDhncUpJdlJTYVA1RWZOaEZyTjRTcW5ibDl3Wm5EaWtJazBmZzRkcWVPeWhOdXFIQ045ekdPS2g1Nk15Skd5aEJFcWZlbnIyX2JQOXRPc2V2azJoTU1yVnlyZVREWkR4djNCLUpDeXRiNy01Ul9LNjdEc1Z4TGpUOUo4SmNqaHNFeU53?oc=5",
+      "source": "Google News",
+      "query": "10 year Treasury yield",
+      "published": "2026-09-28T14:55:23+00:00",
+      "fetched_at": "2026-09-28T18:44:56.982233+00:00"
+    },
+    {
+      "title": "Live updates: Bitcoin slips back to $83,000 as bond yields surge to new cycle highs - CoinDesk",
+      "summary": "Live updates: Bitcoin slips back to $83,000 as bond yields surge to new cycle highs  CoinDesk",
+      "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOSTJ0ZGRsczd1SmlrLVVJcjUwVFFJSTQzbFdlQklrMnh1X2NadGQ0dUhBV1Z3MmVNT1JON2ZHZ1RqU3NnNnhuZ2FtUWNyaHNsMkF4VktvTGIwVC00b2taN2JyQkZGU1Y0RHE3VjItSFhWLTdrQ0s5d2phRTk1bjJEcUFaRGFIcXJpMkgzUFNoUHJJX2RoN3dVUThUMnhKejlBR2t5VWNVWTBCOGtTSEYxdkxZSkZpMC1wMHJUX3M4aw?oc=5",
+      "source": "Google News",
+      "query": "US bond yield",
+      "published": "2026-09-28T14:45:24+00:00",
+      "fetched_at": "2026-09-28T18:44:59.296132+00:00"
+    },
+    {
+      "title": "Which 10-year yield level will really start to hit stocks? Here's what history suggests - CNBC",
+      "summary": "Which 10-year yield level will really start to hit stocks? Here's what history suggests  CNBC",
+      "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOSEJKOG1kZXpLb3JSUF9GdmNENGloVFNQai1oWkswSFZrU0h3aW5aSXFCV29PUjlLZTFBZXMzZ2QxSmNySlFhTkRhOXgyRWFRUTNyWEdmNHJrTmtMM2RFTk1VYXRYR0hZTEw2RFdTUWRGMS15OVE3UGY0WlhMa01tNi1oYjZiWS16V1V6UVAyZE85YjgzWlFiVEFB?oc=5",
+      "source": "Google News",
+      "query": "10 year Treasury yield",
+      "published": "2026-09-28T14:20:30+00:00",
+      "fetched_at": "2026-09-28T18:44:56.982337+00:00"
+    },
+    {
+      "title": "Dow drops 377 points as oil prices and Treasury yields rise - qz.com",
+      "summary": "Dow drops 377 points as oil prices and Treasury yields rise  qz.com",
+      "link": "https://news.google.com/rss/articles/CBMickFVX3lxTFBmY2hoQ0p3UUFmX1lOTVVoOU93dDdCOEFXWUMtdDJBTmRJLW9mT01VcFBOTWx5Z3MxVlV3MDZvdnZ2d2k4UDhYUXBCazQxT01tdUhaM0d2eFNfOUlrQ0hNcjNZbHBkT2Z1WFN5aVFTQVdmUQ?oc=5",
+      "source": "Google News",
+      "query": "2 year Treasury yield",
+      "published": "2026-09-28T13:58:18+00:00",
+      "fetched_at": "2026-09-28T18:44:57.472900+00:00"
+    },
+    {
+      "title": "U.S. Treasury yield curve nears inversion as rate expectations rise - وكالة الأنباء السورية – سانا",
+      "summary": "U.S. Treasury yield curve nears inversion as rate expectations rise  وكالة الأنباء السورية – سانا",
+      "link": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE9RQ0VCWGR3NllNM2lRUmVCdDY1S0tSUXYyc3B6N2lsUEQ4ZDQ4VWt1WWNBRzhsMkRXcnRLaHNrSEVMdExSbFNkbmhpcWM?oc=5",
+      "source": "Google News",
+      "query": "Treasury yield curve",
+      "published": "2026-09-28T13:19:36+00:00",
+      "fetched_at": "2026-09-28T18:45:01.431455+00:00"
+    },
+    {
+      "title": "What Does Today’s Yield Curve Suggest For A Bond Ladder? - Seeking Alpha",
+      "summary": "What Does Today’s Yield Curve Suggest For A Bond Ladder?  Seeking Alpha",
+      "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQcnN5LXgybHpOQUIwMGdTc1A0SHVFUExMUWlVRFlId000cjZaeW1WNmV0bVNrWWxVcmtmenhTWEQ0bktlVWVZRmxxS2N5NVJtLWszcUVaTXEwZGRtX3VldzJtcXRnS1JmZURHekJ4X0NjczZhRUVEUDhPMHR5al8tcnVocm91c0NJNnkw?oc=5",
+      "source": "Google News",
+      "query": "Treasury yield curve",
+      "published": "2026-09-28T13:10:00+00:00",
+      "fetched_at": "2026-09-28T18:45:01.431637+00:00"
+    },
+    {
+      "title": "Nvidia's new AI platform, Nor'easter flight delays, NFL's drone focus and more in Morning Squawk - CNBC",
+      "summary": "Nvidia's new AI platform, Nor'easter flight delays, NFL's drone focus and more in Morning Squawk  CNBC",
+      "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOOWJsc3YtMzFrcHdhNlNPRDdZTHZqcWFiY2JjdzZJTTlSNlFJbXBvNC1uYjgzcHdCYXdRMmpJMndkNUg0R2hxcExwbUlKSHdJUFdrUEJnNjR5c1VFNC1fM21sLWI0ZElfUEpDX1IzWUViOWVoaG8tNnF6N0JsSXYtcHpENHhVcGR1Vmdj0gGQAUFVX3lxTE1KZHJhek1uc0ROamdRZDgyRzhlTDZoZkgwWUMzVkczNHpNUEI2R3RIS04wZDBwWV91bmplWEhOT01XYWVqbmY3b3FmV091Z2h4Wk9rMHBpbDczaGJvQ1VSVG9ybDNZYXliMVE4aDZINjNEUDI0RDAwRi1lWHU0V2RRdzZzbDgwSGRycjVxWEY3eA?oc=5",
+      "source": "Google News",
+      "query": "US Treasury yield",
+      "published": "2026-09-28T12:09:46+00:00",
+      "fetched_at": "2026-09-28T18:44:56.300600+00:00"
+    },
+    {
+      "title": "Gold Sinks To 7-Week Low As Treasury Yields, Fed Hike Bets Rise — Hansen Warns Bullion’s ‘Resilience’ Faces Its ‘Toughest Test Yet’ - Yahoo Finance",
+      "summary": "Gold Sinks To 7-Week Low As Treasury Yields, Fed Hike Bets Rise — Hansen Warns Bullion’s ‘Resilience’ Faces Its ‘Toughest Test Yet’  Yahoo Finance",
+      "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNNC1WT045SThNUWlteWVzRzNYaGZ2MkdXZDJqQTdqb1YyM3RGQmVBVE5GYUh1bXFfWEctUVJORVZ6MjlrakVUcFpXaXZ0UjVsQk52QUgyWTlWWVlDX09Oemx3LTkycWJCMC1TcVo3V25WUGEzaXhKbTkyNjRWMHlUTnVUNVJwTFRUS0s4eDNIQVVSY0g0cFE?oc=5",
+      "source": "Google News",
+      "query": "US bond yield",
+      "published": "2026-09-28T11:41:44+00:00",
+      "fetched_at": "2026-09-28T18:44:59.295975+00:00"
+    },
+    {
+      "title": "US 10-year Treasury yield hits fresh 19-year high - Economies.com",
+      "summary": "US 10-year Treasury yield hits fresh 19-year high  Economies.com",
+      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxOeTBxMEIzalpDZldsT0tYdDVwSmdNNXQyUkxuWjZSQlVjbGQzRVBuVUdnMHdkU3pKcEpSSnc0cDZaUk5wV0tfSlJfU0hDVnJsNC1HMkxfZW9zbmZSdmljY1ZwNDB1Z041M2tLb0FaSjhkZG1iWWp4ZWRZM3MwQzhyaFNiMEktVXgxS21rNEtHQlFNdi1iNDIwV2pDQkhuVER0Q2JoVXZ3?oc=5",
+      "source": "Google News",
+      "query": "10 year Treasury yield",
+      "published": "2026-09-28T10:37:00+00:00",
+      "fetched_at": "2026-09-28T18:44:56.982286+00:00"
+    },
+    {
+      "title": "An Inversion of the US Yield Curve Becomes New Risk as Fed Hikes - Bloomberg.com",
+      "summary": "An Inversion of the US Yield Curve Becomes New Risk as Fed Hikes  Bloomberg.com",
+      "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPQTFrYzFvbDRlX0l0RU82NG1VZElManl5VkJCNk9FbUNfakVQaDlqYVZFWjUzWHpOWlJIeEtTRUw0bVZDN09XbzJEY2wwZmRWQ3hVaUhEaWpRNl9XSFFJTlN0QVg0aVd0NUhNcGdPWXdoVnh1MHhsYUFMRXFETElzS1E1eWdZWWFzaFhORzdSZXVWQlNhWE9zbTNkS09MWnBpQUNZS3JoUTRZTFd3ZWhWVUtKWQ?oc=5",
+      "source": "Google News",
+      "query": "Treasury yield curve",
+      "published": "2026-09-28T08:52:16+00:00",
+      "fetched_at": "2026-09-28T18:45:01.431514+00:00"
+    },
+    {
+      "title": "Treasury yields edge higher amid pressure on global government bonds - CNBC",
+      "summary": "Treasury yields edge higher amid pressure on global government bonds  CNBC",
+      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE41Z0tuczlCbWIxU0ZyYXE5N2hjV1NtU3U0LVVkRWtUUkZyZFBJRzN6cDlaYTVyZjdJVE80TG5EeUE2UHgzRmRFX3FSbVJiSENtci15Vlo1NjU3OE04SmV0U25TeWZaLTlFdThpRDdSYjZFbHF00gF6QVVfeXFMUGtkTDVNOUd5NEJQRHF2S0ltSWpnTWo4QUtEWUR1Y1dONkM4T0FOVUgtTXR4MHowZDV0WUlhcXFyRUluRzgyM3JkWFNveURoakZ3aVpaWE8tNC1ERjJhXy0tcHBUejAxdnpjd014NGhEN1FYWkxtX0Jpenc?oc=5",
+      "source": "Google News",
+      "query": "US Treasury yield",
+      "published": "2026-09-28T08:49:06+00:00",
+      "fetched_at": "2026-09-28T18:44:56.300323+00:00"
+    },
+    {
+      "title": "Evercore sees yield-curve inversion risk rising as AI bull market holds firm - Yahoo Finance",
+      "summary": "Evercore sees yield-curve inversion risk rising as AI bull market holds firm  Yahoo Finance",
+      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOOWU0MkVYQ0hsejZXbnBBVE9KZXJ2aTVlclNlenJLcHFSaXZ2djFQcjZLbHRQMW9GTkJNX0xxUHVGWEF3OXdtMUdyOU9OampQQ1lxRHMwTk4zNGc4d00tU0xPTHcxN2VvMzkwWVZLelZzSlo5RW94a0RNelJIYTlsRERXRGtObTkycmo4ZFpUdGxreFhmOU50amdPanR4a2FQVFE?oc=5",
+      "source": "Google News",
+      "query": "Treasury yield curve",
+      "published": "2026-09-28T06:53:00+00:00",
+      "fetched_at": "2026-09-28T18:45:01.431579+00:00"
+    },
+    {
+      "title": "US jobs report could decide how much higher Treasury yields can go - investingLive",
+      "summary": "US jobs report could decide how much higher Treasury yields can go  investingLive",
+      "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNSFQzc01lUTJXV3lmY2x0N0ljQllOQWdwWkNtczd2Sms2eXFpWjZmUHdHdFZTZWJWUE9GdGtDRl9zX000MWx1elc4bUExYnJILWI4aWtDR2ROazRxQ3YzcGFSMnU3MjVrTGlmQko3UVA4YXFQdzNBa2hIdHZvVUtNc1BaVnpMSFlCd3o0WkdGX2dJbEhMYmpLMF9oMmR1OUE?oc=5",
+      "source": "Google News",
+      "query": "US Treasury yield",
+      "published": "2026-09-28T06:28:10+00:00",
+      "fetched_at": "2026-09-28T18:44:56.300532+00:00"
+    },
+    {
+      "title": "Bond sell-off deepens as oil prices rise - Financial Times",
+      "summary": "Bond sell-off deepens as oil prices rise  Financial Times",
+      "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxOcWVDcjI5dWgwWXpWMGhLWm1aMFRlQXUzNlhNekN5amMyYzcxSFdaVVFEVTVoY2hEWDM5N0ZOeEg2Z2ZWY2ZJbXEtbUdnOGtGVUZyOGRtZFpJN3J4aXoyN3BjRGZyOVIzd1o4bHBNc2hxQzlPcGJQQ0cwM21nVDFubXhFWDc?oc=5",
+      "source": "Google News",
+      "query": "US bond yield",
+      "published": "2026-09-28T04:31:38+00:00",
+      "fetched_at": "2026-09-28T18:44:59.295912+00:00"
+    },
+    {
+      "title": "Opinion: Why the upcoming jobs report could send 10-year and 30-year Treasury yields surging - MarketWatch",
+      "summary": "Opinion: Why the upcoming jobs report could send 10-year and 30-year Treasury yields surging  MarketWatch",
+      "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOYXdEb3VLQV9GeWF4cjFmYmd4eS0tUVNkeWFSNVY1RHUwNFFTUHQ0YVQyb1gyYVE3OXl5UWh2eTlUUFpiMlJuMWFMSm1IOWJ1enk4WUFGNUwtUGxzWHg3cXVZYW1pTU02djJBdGhtc3dQZ1VsU0JNUEJXODlVSHY4R2t1SzBDdFEwekNWWndsMWV5XzdIS0p1bEVYSjU1OHlRdVlScnBSZ3hLZlh3SWlySEtQZ0ViWDZ4eGNfbGlwSVBDWmVq?oc=5",
+      "source": "Google News",
+      "query": "10 year Treasury yield",
+      "published": "2026-09-27T11:00:00+00:00",
+      "fetched_at": "2026-09-28T18:44:56.982118+00:00"
+    },
+    {
+      "title": "Here's how much worse U.S. debt could get as Treasury yields surge to the highest levels in two decades - Fortune",
+      "summary": "Here's how much worse U.S. debt could get as Treasury yields surge to the highest levels in two decades  Fortune",
+      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPVDNtX2cwczh2S1FaQkhyU29Cdktneks2alhjRDRjdmdyZVVKLVEtcEUwUzRsVlVodEdoSUgta0VXRmN6QmM5cnpEck9nQ01PTHFKeHB1dXpHcUpBcGhyVjhTb1NaQ011WlJBLV9QVUIyLUdXY1hTVE1KYTNkR2NCdmpSNXJXWVk1MVhRZ2dwUVR1dHY5anB4WFY4VzJ2ano3amc?oc=5",
+      "source": "Google News",
+      "query": "US Treasury yield",
+      "published": "2026-09-26T22:39:00+00:00",
+      "fetched_at": "2026-09-28T18:44:56.300450+00:00"
+    },
+    {
+      "title": "The 10-year Treasury yield is at its highest in nearly two decades. How we got here - CNBC",
+      "summary": "The 10-year Treasury yield is at its highest in nearly two decades. How we got here  CNBC",
+      "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNdjRseTh3M19YMmZMRzZwNmNzU2lKOXBaQWZFY3h6NmljdHFJbk1MaHBrSHdnUHYzQ3Z2emhBZUV0eGNDT21JcVIwaE84d0diZHpTTmxydzZhaElHSVR2VHV4RzVMS0RKUktMMU1RaDhxQ08zTER0UDkyMVVUX1p5ZXRaZTltWmNzdHVGOGotdjB3OVNCbGtvV3A5Z3ZyU05QVGNWSVB3WmzSAa4BQVVfeXFMUEZ0RlpZaDh6bGxuVzVZalpuRHEyMEM2ZnE3SGxpUHdQbXZPcVBYRkJkYzhITFVHa091bUZ0eldHbW9tTTRlRW5kU0ZPTFctNjk2TC1WaHA2Qm9kNV9TX1F1b0R3NFlUblFtek95a3dVVzk3QlFGbjZaSWVkZDBBTjdRRE5RMS12ZUxITldWalVwRU9sT3Nsc1hLdGNrQi1MSktCM0cwSThjX1ZPY3JB?oc=5",
+      "source": "Google News",
+      "query": "10 year Treasury yield",
+      "published": "2026-09-26T13:30:06+00:00",
+      "fetched_at": "2026-09-28T18:44:56.982477+00:00"
+    },
+    {
+      "title": "US bond sell-off pushes long-term yields to highest since 2004 - Financial Times",
+      "summary": "US bond sell-off pushes long-term yields to highest since 2004  Financial Times",
+      "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxOUEF6VWtyME5McDVSRjhHVkY2SnNVTTROYl9FX2d3X2JyME5lOWVTdk5iSDRSNmtfN1dnd0d0R2NVUURLR2VMczBMLXdTNFJSLS01dVZxZ0ZPbC1LbXdMWExzbDBQc0pBV0pyR2VFMldLQkI1SndCX3FDc1UyX1B6dXdGLW0?oc=5",
+      "source": "Google News",
+      "query": "long bond yield",
+      "published": "2026-09-25T20:24:38+00:00",
+      "fetched_at": "2026-09-28T18:45:00.696774+00:00"
+    },
+    {
+      "title": "Soaring bond yields ‘not even close’ to cooling red-hot US economy, investors say - Financial Times",
+      "summary": "Soaring bond yields ‘not even close’ to cooling red-hot US economy, investors say  Financial Times",
+      "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNeEhLUFZtTkNDMS1jTFF2am1wTENnbk96c3d2OEVfbGJVaHlIbGg1YmRhNFhyOG9XbmN3VGs5cmc0SlF3TWk3cWwzaEN4MnVPZXkxQ1VzZVY5anBCWVhXSy11RHphcnJCNk4tN1dlekxIRFM5RFNSYjZmM1VDR082WWVjTWY?oc=5",
+      "source": "Google News",
+      "query": "US government bond yield",
+      "published": "2026-09-25T20:00:09+00:00",
+      "fetched_at": "2026-09-28T18:44:59.810296+00:00"
+    },
+    {
+      "title": "The 10-Year Treasury Yield Just Hit 5%, and It Creates a Dilemma S&P 500 Investors Haven't Faced in Nearly 20 Years - The Motley Fool",
+      "summary": "The 10-Year Treasury Yield Just Hit 5%, and It Creates a Dilemma S&P 500 Investors Haven't Faced in Nearly 20 Years  The Motley Fool",
+      "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQZ19RRldYbzkzMHB1T3JMbHQydXBnMDBzaDA4ZDk4RDE1TU5vSVlMM3V4TEJKeXkwazFyc3Z0TXMxNUpsNm9OLW5aU3V1dmNrcWJqQkNkRGpyOUNjWmJES2hsQlZvam5uellfR1dzMEloWUJqUUJBZV9NaUNIRlc1R2pPNWlHUFQ0RVBvcVVPeXJwR3Zi?oc=5",
+      "source": "Google News",
+      "query": "10 year Treasury yield",
+      "published": "2026-09-25T17:30:00+00:00",
+      "fetched_at": "2026-09-28T18:44:56.982419+00:00"
+    },
+    {
+      "title": "10-year Treasury yield hit a 19-year high—and some investors see opportunity to buy bonds - CNBC",
+      "summary": "10-year Treasury yield hit a 19-year high—and some investors see opportunity to buy bonds  CNBC",
+      "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5xeGZGd2dtVTBWbzhHcUQycEVzX21HU0RBZV93TGZjZkppVEsxMkY5aFc1SUlOUlNUR04tV3k5aDlxNjBYeVByUEQ5R3RnZk5aaGhlUVJBYzNkSTlRaGpVY0ZZTUVhWjA0UDRzbEVB0gFzQVVfeXFMTUlFUTZEcWJxUVlRSXBUZkQyWVRxYkFDMUhtVnNfNEgzWTZJVTJyMnp2RHBEYkdqTUpla1FDdkRZUHZDVVpWZURvZFFiZzJnY2FKU2tLckxSSC1wUEFYVzcwSWU0RnlERElSalFBeXYtTFJCYw?oc=5",
+      "source": "Google News",
+      "query": "US Treasury yield",
+      "published": "2026-09-25T16:40:09+00:00",
+      "fetched_at": "2026-09-28T18:44:56.300678+00:00"
+    },
+    {
+      "title": "Steep Yield Curve Opens a Window for Bond Investors - etfdb.com",
+      "summary": "Steep Yield Curve Opens a Window for Bond Investors  etfdb.com",
+      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQMzJtaGdadlVFYUZHYU5jTWJRWkdXdmxjdG1HaVY2Z2FPdnlDTFRmRUQxdnBWeWhmWDZBOVJSZmRkc0pWOWwzRFJyWWVucHdhXzhjTlZVNFY0UC1VajJ3VnhFSFhYck1hb3ltNUFadmZieHZQU0xVRDUwQVBLM3RaUll2VTMtcmRYN3pBZllpa2JVQ2k4VVhUT1BjMA?oc=5",
+      "source": "Google News",
+      "query": "Treasury yield curve",
+      "published": "2026-09-25T14:27:45+00:00",
+      "fetched_at": "2026-09-28T18:45:01.431690+00:00"
+    },
+    {
+      "title": "Solar Stocks Tumble After 30-Year Treasury Yield Hits 2004 High - Yahoo Finance",
+      "summary": "Solar Stocks Tumble After 30-Year Treasury Yield Hits 2004 High  Yahoo Finance",
+      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxOaE1aejN1UnZtejc3bDU3ck1qeVBTVG1YZWlfSUtaSERVNTBUR3BoelVvQUZ1QUFFNmlhZlVmT25CbEJDVTd1VzJqeVIwSllkVElOdnF1RU14ZDRZY25ZcFNGNHhLOHFjeFpzazA1clpIZm5WVDNJaXJSU1dYWGdQcGFlQ1FmdEFHR1ZQazVjQlVIdw?oc=5",
+      "source": "Google News",
+      "query": "30 year Treasury yield",
+      "published": "2026-09-25T12:59:42+00:00",
+      "fetched_at": "2026-09-28T18:44:58.422095+00:00"
+    },
+    {
+      "title": "5.5% 10-year Treasury yield could trigger stock correction, analyst warns - CNBC",
+      "summary": "5.5% 10-year Treasury yield could trigger stock correction, analyst warns  CNBC",
+      "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOZThyVGd6d2xCU2NUUWtIR0t6dVdLTDhzQzdZUERlamVPbWpab3JHRm9EazZGSzZTV2NwVG5aYkY2bnZ1OXBmMVRIQmVCMTBZM29lZ0xKdzg0NG5NR3JPeWEtT3MxRDIxS0Q2RndqZ3F3ajR2RWt5T0Q2clJuZ2tmTnJHQmpmRHlRODlQQkZpOUI2ckxyWmhjdTNzV3JBcUNxT0NTYkZUcXhyOHA0RjlGQVlHek9sUU1UcWNrdEhJVQ?oc=5",
+      "source": "Google News",
+      "query": "10 year Treasury yield",
+      "published": "2026-09-25T12:03:00+00:00",
+      "fetched_at": "2026-09-28T18:44:56.982531+00:00"
+    },
+    {
+      "title": "Why High Bond Yields Look Like the New Normal - Bloomberg.com",
+      "summary": "Why High Bond Yields Look Like the New Normal  Bloomberg.com",
+      "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQdUctWXZENkg5bk5sYUhvS0lvYVFVeEJma2pLNEhyRXkyVWY2YzdZbG5FSEpNR3d5TDQwVW9YdDNkSnVVSTNpcm5PbGFhVnRJNnY3R04weEZXOVZDSE1VR0FFWVozdWR0elJVZ3Z1SG1Ic3JjQVdTZDU5TnJoWDk0a3h0Q0NQNHJxZF81MjRybzU2QWFfdTlkamV2TndMSmxCdkJpZm1ZSU9ydEFmVHhkS3B6NUVlQ0dhZDNkRmhqTHBOcXE1MTJF?oc=5",
+      "source": "Google News",
+      "query": "US government bond yield",
+      "published": "2026-09-25T09:42:21+00:00",
+      "fetched_at": "2026-09-28T18:44:59.810361+00:00"
+    },
+    {
+      "title": "European bond yields ease after brutal sell-off as US mortgages hit 7% - Euronews.com",
+      "summary": "European bond yields ease after brutal sell-off as US mortgages hit 7%  Euronews.com",
+      "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOMU9ibjloMEJxOW5HYnV2NzMtY3QzaW55Nk9jX1NVQUNlWjh0OUJpUlZ6ejBNMTJocnFxem9tdjJMRnJHZ21nNU1TWnNLN2F2M204Y3lwMlB1R1ptVlJoSEJLRDYtaGxOMl9HdzE2b2M0aHBsUXV1Z0o4d1ZWVVVaU0ctMFVwaXEyMHNKbHYwbzhjcFZKZElPLVBIWFdQaTFMX0pfbnh0TUYtTkxLTnRQYXFxOG91VHB5cUdvWXUyMUU?oc=5",
+      "source": "Google News",
+      "query": "US bond yield",
+      "published": "2026-09-25T09:08:02+00:00",
+      "fetched_at": "2026-09-28T18:44:59.296184+00:00"
+    },
+    {
+      "title": "10-year Treasury yield is little changed to end a volatile week - CNBC",
+      "summary": "10-year Treasury yield is little changed to end a volatile week  CNBC",
+      "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE4xS1pGNzRkMTVWWkk4LVdDdndhTTZ3OEdqd3FqZ1c1R3pMdlR6ZUdJbllYcXJQbWR4WEI1VmlUa2NKalBrZXl6R1U0WkF5R3lBNG9nUnJKLUwzOWs2MEZvN0FJOWppSnl6N3ZjQ3NQRTDSAXZBVV95cUxOeEIwRGVVemdBVTY5UlVRc05WUDFrOThJZUNNTk56NUhLUmIxMFdCSEZiM3VDbjJmWmg1V1VEa0o3WEUyMi1IRFU0NlpuVWJwN0tGUUM3STFnT184cDNpdTRKWmg5TFV5RmdoWlBFNk1RclUteThB?oc=5",
+      "source": "Google News",
+      "query": "US Treasury yield",
+      "published": "2026-09-25T08:08:03+00:00",
+      "fetched_at": "2026-09-28T18:44:56.300639+00:00"
+    },
+    {
+      "title": "Treasury Yields Snapshot: September 25, 2026 - Advisor Perspectives",
+      "summary": "Treasury Yields Snapshot: September 25, 2026  Advisor Perspectives",
+      "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxONkN0V3Bfc2lyOHFnc2tqa0FhdW05UlNTSjg5Z0pZYXI2aXMxWGZ4NDk4X0hEZU14MTFSUjdQZXhtUDd4WDhvRk1xY0I5MG41bjZJSzJIckFEWExvTkxQWURqSm14Ym83WUYzTk1sSXA5Z0JreV9Vb3dkaXBuSXBCaHIxYV9pNVhqQWItMTg1QkdPWkduN0gxMjBYWkhXMi1fc3FCcEx4MA?oc=5",
+      "source": "Google News",
+      "query": "2 year Treasury yield",
+      "published": "2026-09-25T07:00:00+00:00",
+      "fetched_at": "2026-09-28T18:44:57.472825+00:00"
+    },
+    {
+      "title": "The 10-year Treasury yield hit a 19-year high in September – Why is it so important? - Chase Bank",
+      "summary": "The 10-year Treasury yield hit a 19-year high in September – Why is it so important?  Chase Bank",
+      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOQjg4Y2plQlJqS2NOVl9ESV9ld2taeDVPWUdkU3NTTm83eTc0MkJGb3hiRE9XRDBwbjgwamdxTXE0cHpmdHUxVjUwSnpqbDc2U2tWdS0zYzhwNWFsMXIyS192TzFQRTVkQjJRSjA5a09leVlybUpjblBNNW5MZGdFTzV6MEx5cTB1cXlaRVFOUkJuUFo0MlhTMS1BWkxjZS1CSEVJMFNKVDVEN3dWYk8yUi1ScGI2d253ZlE?oc=5",
+      "source": "Google News",
+      "query": "long bond yield",
+      "published": "2026-09-25T07:00:00+00:00",
+      "fetched_at": "2026-09-28T18:45:00.696550+00:00"
+    },
+    {
+      "title": "US 30-Year Yield Hits Highest Since 2004 as Bond Selloff Deepens - Bloomberg.com",
+      "summary": "US 30-Year Yield Hits Highest Since 2004 as Bond Selloff Deepens  Bloomberg.com",
+      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQdEFpMWlQaUVHX2JoQnVVRk5MUkI5MWN0cjB4ZEQ2WHZRdjM3ZTk2WnlISDlpQ05PaW5pQ1B1OWNOREdxNWRvcFZUeVp2MzA0WnFBY1R6SHFBWGlRZkg3VXhyV2J3ckt6dnJuZU1EYVczV1V2R3NXOUVUVDVGN3lDWWxDQU1TVHdMbHhHWFVTbmw1Ujd0c1pheTE0VUFZZHpVSkdjSWN0Mll3TDlCWjJXNnZlSUVCZw?oc=5",
+      "source": "Google News",
+      "query": "30 year Treasury yield",
+      "published": "2026-09-24T21:10:04+00:00",
+      "fetched_at": "2026-09-28T18:44:58.422328+00:00"
+    },
+    {
+      "title": "Why bond yields are rising and why everyone should care - ABC News - Breaking News, Latest News and Videos",
+      "summary": "Why bond yields are rising and why everyone should care  ABC News - Breaking News, Latest News and Videos",
+      "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTFA5WDlvXzdlLXBPNm1qcnBaeXRFaGFUVldPWE5ORkpUaXRVM2hCRWN4RUpMRUpjYm5IRm5OQ3BIWk42cXJSNmM0MEpKLVd2aWNyUmp0b3dQeHFXOUZlbW9tbjBHUlV1Nkswdmh6M1RCSjA3WXBPdm56TEpFdl_SAYIBQVVfeXFMT25wQ0VBdDdyVkxhSXBoeWpPeXNlLVpKVjBmQUppdmxHeFpTd0ZEX0h6bXl0cWV5OElHU3IzeXpQdmcxX1NyRUZvQWZkeWdQZlA3cVROMjVyVTc0b0E4LWp0cHZnOVRYZnd2UGRZWWVEMVJUT2dSS1FKWTFndmZ0TWJnZw?oc=5",
+      "source": "Google News",
+      "query": "long bond yield",
+      "published": "2026-09-24T21:01:48+00:00",
+      "fetched_at": "2026-09-28T18:45:00.696721+00:00"
+    },
+    {
+      "title": "U.S. Treasury Yields Hit Multiyear Highs on Economic Data, Fed Rate-Boost Expectations - wsj.com",
+      "summary": "U.S. Treasury Yields Hit Multiyear Highs on Economic Data, Fed Rate-Boost Expectations  wsj.com",
+      "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxObTFzZ3lYSmd4bGVKQk5TLXBfM3ZvRUtoM04xcXJfOHl2Z21ReW0wNjM4N3RXS00xZ2dGS082ZW1CQ1dtMzF4MXpKUFYxUUZ5ZWxxUkdDLWVQYjEtQlVTSm5tdzdFZGFrVVp4RHFvTzlVcENLc1FmXzRQYVhtU2psTXpMWDJlZXBOZ0FFTzhJV3k?oc=5",
+      "source": "Google News",
+      "query": "Fed bond yield",
+      "published": "2026-09-24T20:32:00+00:00",
+      "fetched_at": "2026-09-28T18:45:02.216574+00:00"
+    },
+    {
+      "title": "Fed decisions may influence long-term bond yields - Axios",
+      "summary": "Fed decisions may influence long-term bond yields  Axios",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPb1pvcHZyTloyNGtVb0ZvUExYazc2Sk43bDZPaEQzRVFmRWRUMldSWWZxbU8tZXFkRVl3a0RUSWdZREdlbXRhVENXd2gxSV9GcUhrWWNaYXE0VEFjQTRBSWJVSWNaSEhwM2pIREVvZVZEVm5VZUpkVlJTakJOZ1BuekZBZ2liZ2R4dW11VS1n?oc=5",
+      "source": "Google News",
+      "query": "Fed bond yield",
+      "published": "2026-09-24T16:53:08+00:00",
+      "fetched_at": "2026-09-28T18:45:02.216869+00:00"
+    },
+    {
+      "title": "What the bond market is telling us as yields spike to 2-decade highs - Business Insider",
+      "summary": "What the bond market is telling us as yields spike to 2-decade highs  Business Insider",
+      "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPSkotSUJhUEF6Xy04ajBOZXdOU3U2WFk0bHd4c0ZRcG1jeURkTHhoM2V4Z3NyWWRqNnNGT1lod3I4U2trRjFoTzkxZXZ1X19ZNDJfSG5kZU5kVGZOTGRqQmxpcm5JdjRGN0dKbkFjLXVBSm9hVldyMUVEYkV0bTFTN1lud082YXZyN0NfdDNLWC14Q01rRlpFcUdUVDBOcVBDWU1BN21TZmFTZ0lqQlk4?oc=5",
+      "source": "Google News",
+      "query": "long bond yield",
+      "published": "2026-09-24T14:41:00+00:00",
+      "fetched_at": "2026-09-28T18:45:00.697025+00:00"
+    },
+    {
+      "title": "Bond crisis worsens! US 30-year Treasury yields surge to highest level since 2004. What lies ahead? - The Economic Times",
+      "summary": "Bond crisis worsens! US 30-year Treasury yields surge to highest level since 2004. What lies ahead?  The Economic Times",
+      "link": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxPV3RUTTIxYVFNcFRUSWIyazdoSlJoUzllVmd4czBXRHhwSFNzZ01ScU5vT1FYWkVYeF9SZFg1WjhpM1BnU0UtdlotelJsSjVhb3pHekxZNzRFZl9tb3RNeF9Fa1RnelFhdUdSLWNtZm9FejVKN1NkeGQ2UURBSnAyc1k4Z1k5NGJEa0RUT0xlSmItS1E0NGhWcEpWQUFoMmp4OHl4aEg0SmpWNWNleW44WkdIZzVkWU00VXFVLXp3TTZrZ3lKVmk4QnY3dTZpdmZlbzZCQkphU0JWMld3M1VzaUFyUkpHdlYyeWxpdG1icDXSAfYBQVVfeXFMUFFzSUZ0N3pMTVVLaUlRUF9NazB2X295Z21UeEhxM1pBTkN6SXhOVjEzemY2TktsNnEzVklINXlOTmFWZnJBbjliR29CNS1wdTNkeE9sM1VuRW9lZmhEcGs4ME5PMW5Qa1NZbzB0XzBTYktJQzRTNFJ4SUd4Szd4VHlESGNGX0x6SDdYNDlZNnhQRXk0RGYtMTFEMGlfS01RMDIwQ01md1ZWN09fWEwwSDliazNNc2hqOV9BQmFNNVVBWEdVR2JuWTgzU1d2dFRYYXludW12azlmenA0R0RvWTFpbFFqZ3ZmODgyWXIwREVYOUJlNVln?oc=5",
+      "source": "Google News",
+      "query": "30 year Treasury yield",
+      "published": "2026-09-24T12:50:10+00:00",
+      "fetched_at": "2026-09-28T18:44:58.422534+00:00"
+    },
+    {
+      "title": "Stock futures fall as 30-year Treasury yield hits 2004 high - Yahoo Finance",
+      "summary": "Stock futures fall as 30-year Treasury yield hits 2004 high  Yahoo Finance",
+      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQR0VZYkQyYkpyNUZWWGlDblRJMzQ5cEpTQlBWUUhLUDdXZnNTelpheXRiSGVyQVZGUG1WMzg0Q2lNbk9qUC1iYWpHUWJBUmhIbHJ6Rk1Qd0RpUEpIYUlGV002aDQ0UV9nMnFtMFVvY2FXXzFlUkdCTmJodHlaQ1VXaWJTNExnWENxeEU0R1lsMkZJTHB1YUZWbUhpRQ?oc=5",
+      "source": "Google News",
+      "query": "2 year Treasury yield",
+      "published": "2026-09-24T11:21:31+00:00",
+      "fetched_at": "2026-09-28T18:44:57.473291+00:00"
+    },
+    {
+      "title": "30-year Treasury yield hits highest level since 2004 as bond market rout continues - CNBC",
+      "summary": "30-year Treasury yield hits highest level since 2004 as bond market rout continues  CNBC",
+      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQNUZ0WWI3VTlPbHQ3STNaSkxXYlY4V3VuWjl1Vk1NekZVVF8yc25tcEJCSTYyRXNwRHNQTDFIdDUwNjBZeDFKMVE1cjFYR2lKYVBhNVAzVTZwWDFJaHJVamJNOUw3c2daanUtNVJHZUwzdDJqYzJsLUdSQ2hhbEdDU9IBhgFBVV95cUxNbUlucHpWTkdaWTZyZFR2M3JFOTFEVFFFVHgzRXpDSlgzVXZMU3c2UG5VYzRKbDJpeUJxeWMzcVRCVWlfa0ZYc0k4N25UMk03MHI4RF95cW43YklydExmNkJhblZscWo3cWNqZEVLblVzSjBIbFdkY0FhUzdHX1JrZ3VVb0dhZw?oc=5",
+      "source": "Google News",
+      "query": "Fed bond yield",
+      "published": "2026-09-24T07:16:10+00:00",
+      "fetched_at": "2026-09-28T18:45:02.216514+00:00"
+    },
+    {
+      "title": "Explainer: Treasury yields are rising - why does it matter? - Reuters",
+      "summary": "Explainer: Treasury yields are rising - why does it matter?  Reuters",
+      "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPald0X3dXV1ljdkIzY3NfdVd4d0xKeGZkcGUxemZXalVhaEZ5WnVXNHZ6R3RkdmNxTENsUGkzam1uU3MyOFU1cWM2dHRpaG1jQ0tNZ0U4Q3VDclM3TjVHbXk5Z05kVUlLWjd0cFlXendfajc1bTNLb3BfeWJ5TkxJSjVlS0kzNl90SWRoTWdFZ0xkd296cmZkMm8xcGhvN2M?oc=5",
+      "source": "Google News",
+      "query": "30 year Treasury yield",
+      "published": "2026-09-24T07:00:00+00:00",
+      "fetched_at": "2026-09-28T18:44:58.422207+00:00"
+    },
+    {
+      "title": "JGB yields jump as inflation worries resurface - Reuters",
+      "summary": "JGB yields jump as inflation worries resurface  Reuters",
+      "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPQXBZNDBQTW02eEF0MFZoT0dHRnp3d3Q2bU1YTmFMQWxpdEFWM0FTSDRpV2FnSjdmOGVzT0dTaWFqT1cwS0s3SEUwdnV1cS02UlVBRGkzb1NBcThtZjBTT2Zsd2NUWTB1ejMxUHlxTWVrMmFkUktDbFZYbHJZbDAwMXJWX040YzA3WjRiZjhWNWQyMlQ3cmRNSWhySjQxaVl0S0Q4YXc5bGFNRDU1S3dqMHVnWVVnTFdaVW5TcXlCeVdOdw?oc=5",
+      "source": "Google News",
+      "query": "US government bond yield",
+      "published": "2026-09-24T00:58:00+00:00",
+      "fetched_at": "2026-09-28T18:44:59.810691+00:00"
+    },
+    {
+      "title": "Treasury yields surge to near 20-year high as oil jumps back above $103 per barrel - NBC News",
+      "summary": "Treasury yields surge to near 20-year high as oil jumps back above $103 per barrel  NBC News",
+      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQZFVRcXhaN1BnRS12QWowdG1oZ1AtWDRWZWI1S056SE9MNWctNFM5dDlqcmRXWlNzXzdXbFE3c002V1FWQVhvVzlMWlJ0SFZNeFlhQkU2aURSXzI4SUZ0V1hRX3J6S2xlc21IOEZ5Y0FuVV9KV08zS01HUFZyZVV5WlJUbw?oc=5",
+      "source": "Google News",
+      "query": "Fed bond yield",
+      "published": "2026-09-23T20:28:38+00:00",
+      "fetched_at": "2026-09-28T18:45:02.216926+00:00"
+    },
+    {
+      "title": "Ten-Year Treasury Yield Reaches 19-Year High Amid Broad Bonds Selloff - wsj.com",
+      "summary": "Ten-Year Treasury Yield Reaches 19-Year High Amid Broad Bonds Selloff  wsj.com",
+      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQRkFMbnlhaGlOYlliclVuclBpRmZFOUJPWnFVNlRvRThmQXdlTlkzZmtlcEtITXpXZE9heG5Vc21TaVN4UFBfRExwMTk1M3gtZUozWV9qT3pmc3Y0YmlyZXBUbmc5WnlKYU1NeHZNbEg3MjdMajJsaEVuMXBlb2lLeGJhTWxCZTVHLU9JSWg3eHJ6d2I4YkVNc0Q4R1AtNXVkWmUyQURGZkxEY1J1WV9lVFAxMUNhVkk?oc=5",
+      "source": "Google News",
+      "query": "long bond yield",
+      "published": "2026-09-23T20:05:00+00:00",
+      "fetched_at": "2026-09-28T18:45:00.696921+00:00"
+    },
+    {
+      "title": "US stocks fall as 10-year Treasury yield hits highest since 2007 - Reuters",
+      "summary": "US stocks fall as 10-year Treasury yield hits highest since 2007  Reuters",
+      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPSzB2Vlh0Nm9MZUlDRnA2S1pIMUJXWmZtdlZEVUdFRDV2WEJ1U3pLQnJKUFNBU3YyZGxXZ0trVk1tdm9lVFp0aEh5N0VpVUdOZDNWYjRzOTdUVW84bEYwYnZHNEQ1X213dHl5OGlpQWNSUEFkdXRpRC1rUTRDaDRBMFh2Zw?oc=5",
+      "source": "Google News",
+      "query": "2 year Treasury yield",
+      "published": "2026-09-23T19:58:39+00:00",
+      "fetched_at": "2026-09-28T18:44:57.473057+00:00"
+    },
+    {
+      "title": "Implications of rising bond yields - Vanguard Corporate",
+      "summary": "Implications of rising bond yields  Vanguard Corporate",
+      "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQSXo5d0VnU1A4OXRGQlNjM3hjR01hV21aX0VCb29oU3FadkdiRmtCdllON0VETHdnck9RLU42YTJxaHpoMEdSU29mNl9DUWVETG1YZHR3VElJYTFPVzktNEJNSGNVWW45OGhjSzF2WUJBUzhkbFAxSEk2UV9rcEh3NGkwc0w3OE5OWmhtUjlHN3p4b2FPeEZkRDBxZkc5Vy1FUTJYdVBhNXZzejJD?oc=5",
+      "source": "Google News",
+      "query": "Fed bond yield",
+      "published": "2026-09-23T04:00:00+00:00",
+      "fetched_at": "2026-09-28T18:45:02.216691+00:00"
+    },
+    {
+      "title": "10-Year Treasury Yield Hit 4.8%, Highest Since 2023-2026-09-09 - Committee for a Responsible Federal Budget",
+      "summary": "10-Year Treasury Yield Hit 4.8%, Highest Since 2023-2026-09-09  Committee for a Responsible Federal Budget",
+      "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE50dnM1bW1BLW1TQUZBUkg3YmZFc2N0SnNvcXRzNllZWktOSjZmeGhHdm5Oa0N4U2NZdkZQWDJ2NkUtNWtKaTV6cnY0LTVULWFsZlpTLTRuS1k0NkllaG5JcnZ4RURlV1oteFE3U0xwU1RXMnJaS0RMRA?oc=5",
+      "source": "Google News",
+      "query": "2 year Treasury yield",
+      "published": "2026-09-09T07:00:00+00:00",
+      "fetched_at": "2026-09-28T18:44:57.473237+00:00"
+    },
+    {
+      "title": "What the Jump in Global Interest Rates Means for the Economy - The New York Times",
+      "summary": "What the Jump in Global Interest Rates Means for the Economy  The New York Times",
+      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1faUw2ZTJwa2ljbUpyTkFFbGRFYVlZd29pb24wVHFxM005UWl4RXFxX2pWckkyaGcyc09TdmlkczNmeXloWUo2blE3NGdyTU1DY0FjZUpOZUtURVNxakNaV3pibTJmdnZnSzhPcm1WM28zcWhq?oc=5",
+      "source": "Google News",
+      "query": "US government bond yield",
+      "published": "2026-09-02T07:00:00+00:00",
+      "fetched_at": "2026-09-28T18:44:59.810561+00:00"
+    },
+    {
+      "title": "Mohamed El-Erian says 30-year Treasury yield at 5.27% signals a structural shift that will make America more expensive - Yahoo Finance",
+      "summary": "Mohamed El-Erian says 30-year Treasury yield at 5.27% signals a structural shift that will make America more expensive  Yahoo Finance",
+      "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxOYVhFbThLODU5RTAzdGFGSkJwRVRDdU41emxIbF9fUnBXVnlkRmhxQ0ttUFYxU1dkTmdLYXVVX2RnM2JwQ2ppUWlHR3VFdlVpZzhuQjJBUmhHY29oaHRyODhaaFdyUm5RSFZOa1lHN3RyMnd2bnFTc05VeTZ1bVg1UzBSeVFKTXVvcHREbm1qdHd2Y28?oc=5",
+      "source": "Google News",
+      "query": "US Treasury yield",
+      "published": "2026-08-22T07:00:00+00:00",
+      "fetched_at": "2026-09-28T18:44:56.300711+00:00"
+    },
+    {
+      "title": "Bond market sell-off threatens higher borrowing costs. Here is what it means for your money. - CBS News",
+      "summary": "Bond market sell-off threatens higher borrowing costs. Here is what it means for your money.  CBS News",
+      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQOWRQRFV5WUxrajVIZ0FkS25IOHpoNnMzQnM2MkFlT0MxXzBJVHQzQ2FzX1ZJT1FrampPTDlURE9hejZsU2xpaV84X2NsQUNXVXlXNEdNVE9XMzZYN3dpWFlXbS0tclloaHVWRlgyeGJta2t2bklTeFFoMHk2cGtlUw?oc=5",
+      "source": "Google News",
+      "query": "30 year Treasury yield",
+      "published": "2026-08-20T07:00:00+00:00",
+      "fetched_at": "2026-09-28T18:44:58.422476+00:00"
+    },
+    {
+      "title": "What the Treasury’s Buyback Surprise Says About the Bond Market - Council on Foreign Relations",
+      "summary": "What the Treasury’s Buyback Surprise Says About the Bond Market  Council on Foreign Relations",
+      "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPUVJ6bXhzRjhidmNacEdxUTU1dTZ1X0lCZ2VITXJsbEpnQlVMX3dBNE5VdHpTRVBvalNZLUZKZ1c3X19ySVQtQWdsOVM5TW5pdW9FejFLUC1rN1J4V1hCc0ExRnV5MndzOThHS2phSVJjM2VBSkUya0ZVbm16Q1FneHJUWEZ1a2Uxb1VFcmItYmxRMUJQUGc?oc=5",
+      "source": "Google News",
+      "query": "US government bond yield",
+      "published": "2026-08-20T07:00:00+00:00",
+      "fetched_at": "2026-09-28T18:44:59.810755+00:00"
+    },
+    {
+      "title": "US Treasury bond yields tumble after Scott Bessent steps in to calm market – as it happened - The Guardian",
+      "summary": "US Treasury bond yields tumble after Scott Bessent steps in to calm market – as it happened  The Guardian",
+      "link": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxQUUp2SktxanZsUERETW1nZmlnVUVOcXlDMXI4dmU5cm9ELUlBT2RpVThjWlJENzk2QWlQTldCblJUTWxuOEdxU09sMEdtaFZHY291dXlFVFFNWTczY19oVnU2NUNndVV1eWJURHl6VVNQWUZKYnFObFAtREdXSWxrbW5FdjZkNlE5OGZtLVFyQmhlb1JUNTFEVnhYN1g1YlZZRngzNHdNai1ZZWVJUzhwSWJ0enVVZW1UT1JnOHlnd21oRV9xRXJvcTdrQlU3N2dqeThmdWgxemVsSGVHN1FoTzVHYVNPdw?oc=5",
+      "source": "Google News",
+      "query": "US government bond yield",
+      "published": "2026-08-19T07:00:00+00:00",
+      "fetched_at": "2026-09-28T18:44:59.810631+00:00"
+    },
+    {
+      "title": "Bond Sell-Off Sends Borrowing Costs to Highest Level Since 2007 - The New York Times",
+      "summary": "Bond Sell-Off Sends Borrowing Costs to Highest Level Since 2007  The New York Times",
+      "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9vSUxrUno5VVNWbTdFZ0hMRkxUeVYxY2s4NnIyUkV4WFJMYnFDNXIzVGdYMm92NzFoemRxRUZyRlA3d3VrYXFjTUtFMGhscE90NmRRNjZKYTc2OUhpYVBEdUVSWXBQUmN4bkpZaGxPQnNQTTQ?oc=5",
+      "source": "Google News",
+      "query": "30 year Treasury yield",
+      "published": "2026-08-18T07:00:00+00:00",
+      "fetched_at": "2026-09-28T18:44:58.422152+00:00"
+    },
+    {
+      "title": "30-year Treasury bond yield rises to highest level since 2007 - The Hill",
+      "summary": "30-year Treasury bond yield rises to highest level since 2007  The Hill",
+      "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOR2NoWEU1YXZnbklESmdaYmctbHNLXzRvTTVlY2phMVBUUXNpWWQ0VVRmN2tiR3RwSkxDcnlsYUppR2ZaOUhBY1FYN1R0bDEtRXdhYnI2YVlma1RxeUkyYlZFdmlCSkFDcnVuS18wc3JCQXY4M0ZKYjluRjRVTFBZTGNyVzFCSkt1ZXR3WVVYc07SAZYBQVVfeXFMTnhKellyVXNyRTJwSkZ1YVNDa2dPTmtxdktONWNoNGlxYjk2Qk1qRTkxempLeXNUSnFfOURGaFRad0Q5aUhfTW16M3hrNWNwLUhmNEtidjJvMXNzWk9oSVMtdU83b3UzT0VYSVJvS1ZPRjBsY01GUm5yN0N1TTFWdHhSajZTTXdXaU5ZVUo3WE1uNWctWkJB?oc=5",
+      "source": "Google News",
+      "query": "30 year Treasury yield",
+      "published": "2026-08-18T07:00:00+00:00",
+      "fetched_at": "2026-09-28T18:44:58.422382+00:00"
+    },
+    {
+      "title": "What Is the Yield Curve, and What Does It Tell Us About the Economy? - Peter G. Peterson Foundation",
+      "summary": "What Is the Yield Curve, and What Does It Tell Us About the Economy?  Peter G. Peterson Foundation",
+      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOWDk4R2tzaGhWWWxlZWtadHRvckU2UlZNdGljX19zR3JkYjlPdlgzejZOQmU2dU5PMTZIWnloRVh0NkFDcEQ3ZEdLRndFTUl4clh1YXowYkwzUndfLVpEdkhFNWYxRmhOVVd1cTE5c0JGdDdhbFhVQmxkS0VYaFpKRVhTelB2ZGZfM1RITk9lVng1WjA4eVkzZmg4TWI?oc=5",
+      "source": "Google News",
+      "query": "Treasury yield curve",
+      "published": "2026-08-18T07:00:00+00:00",
+      "fetched_at": "2026-09-28T18:45:01.431795+00:00"
+    },
+    {
+      "title": "Stock Market News, Aug. 17, 2026: 30-Year Treasury Yield Hits Fresh High - wsj.com",
+      "summary": "Stock Market News, Aug. 17, 2026: 30-Year Treasury Yield Hits Fresh High  wsj.com",
+      "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQN0o3amtJdlNTb29WZnUxdllSLUhseTJQT09kV1V3MktIQXlvQndNNDVzX2tibmhORXJBMU9mQjQtWjIwUTVyeHFoNHlnMDJ6VUZaZHByY1FLaDhwVktwZjJ6U01heDh6dk5TMk1JZ3VwSDUtOFlfc2lEbnhFMUhGSlZuUy05d2M?oc=5",
+      "source": "Google News",
+      "query": "30 year Treasury yield",
+      "published": "2026-08-17T07:00:00+00:00",
+      "fetched_at": "2026-09-28T18:44:58.422274+00:00"
+    },
+    {
+      "title": "What rising Treasury yields are telling us - Axios",
+      "summary": "What rising Treasury yields are telling us  Axios",
+      "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBldjNhUVMzNm9CXzlqUkY2MGF2RTc1R1lEY3Bpb3h1M05ka0Z6TWZPdk92SEF6WmZVN0wxd1F3Vnowd08yV0VZRE1sTi01WFZESHhuQ1lDMTYyWlIwSXNoSk5DN3oxeE9oajFpUA?oc=5",
+      "source": "Google News",
+      "query": "US government bond yield",
+      "published": "2026-08-17T07:00:00+00:00",
+      "fetched_at": "2026-09-28T18:44:59.810501+00:00"
+    },
+    {
+      "title": "Why Are Investors Divided Over the Path of Treasury Yields? - CME Group",
+      "summary": "Why Are Investors Divided Over the Path of Treasury Yields?  CME Group",
+      "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQTDk3Q1FKeHNCU2NJSFVZVHlnVXptZXBlbjVQN1NkZzBVUUpIM1VhTEd0UUFKZVE1TjZJeXlEa21MRWhtem5BOFdUZi1yeG8tT1g1bFFyUzFGamQ2ak9Pci1jWFBCYzJDQ0VxS3RZQ2FtMU1acTdJYThycFYwREhqVWszcVRkMjNnZ242cGxtTlU4WlpHVmVhZDJKbWVSam5ZZkUxNWY0dlhkcXNzNjRBODBJVDdtTjVtV2tFTg?oc=5",
+      "source": "Google News",
+      "query": "Treasury yield curve",
+      "published": "2026-07-02T07:00:00+00:00",
+      "fetched_at": "2026-09-28T18:45:01.431858+00:00"
+    }
+  ],
+  "bond_yields": {
+    "US 1Y": 4.057,
+    "US 2Y": 5.064,
+    "US 5Y": 5.064,
+    "US 10Y": 5.238
+  }
+}
