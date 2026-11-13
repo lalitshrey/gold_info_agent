@@ -5,7 +5,8 @@ Usage:
     python get_gold_silver_moneycontrol.py
 
 Sources:
-    Gold: https://www.moneycontrol.com/markets/gold-price
+    Gold: https://www.moneycontrol.com/commodity/mcx-gold-price/?type=futures&exp=2026-12-04
+    Gold fallback: https://economictimes.indiatimes.com/commoditysummary/symbol-GOLD.cms
     Silver: https://www.moneycontrol.com/markets/silver-rates
 """
 
@@ -14,6 +15,7 @@ from __future__ import annotations
 import re
 import time
 from dataclasses import dataclass
+from html import unescape
 from typing import Any
 
 try:
@@ -27,7 +29,8 @@ except ImportError:
     BeautifulSoup = None  # type: ignore
 
 
-GOLD_URL = "https://www.moneycontrol.com/markets/gold-price"
+GOLD_URL = "https://www.moneycontrol.com/commodity/mcx-gold-price/?type=futures&exp=2026-12-04"
+ECONOMIC_TIMES_GOLD_URL = "https://economictimes.indiatimes.com/commoditysummary/symbol-GOLD.cms"
 SILVER_URL = "https://www.moneycontrol.com/markets/silver-rates"
 GREEN = "\033[32m"
 RESET = "\033[0m"
@@ -115,6 +118,143 @@ def _parse_number(s: str) -> float | None:
         return float(m.group(1))
     except ValueError:
         return None
+
+
+def _extract_gold_from_mcx_html(html: str) -> PreciousMetalQuote | None:
+    """Extract the MCX gold price from previous close and its displayed change."""
+    previous_close_match = re.search(
+        r"<td>\s*Previous\s+Close\s*</td>\s*<td\b[^>]*>\s*([\d,]+(?:\.\d+)?)",
+        html,
+        re.I,
+    )
+    change_match = re.search(
+        r"<div\b[^>]*\bid=[\"']sp_ch_prch[\"'][^>]*>(.*?)</div>",
+        html,
+        re.I | re.S,
+    )
+    if not previous_close_match or not change_match:
+        return None
+
+    previous_close = _parse_number(previous_close_match.group(1))
+    change_html = change_match.group(1)
+    change_text = re.sub(r"<!--.*?-->", "", change_html, flags=re.S)
+    change_text = unescape(re.sub(r"<[^>]+>", " ", change_text))
+    change_values = re.findall(r"[+-]?\d[\d,]*(?:\.\d+)?", change_text)
+    if previous_close is None or not change_values:
+        return None
+
+    change = _parse_number(change_values[0])
+    if change is None:
+        return None
+    if change_values[0][0] not in "+-":
+        if re.search(r"down_arrow|red__", change_html, re.I):
+            change = -abs(change)
+        elif re.search(r"up_arrow|green__", change_html, re.I):
+            change = abs(change)
+        else:
+            return None
+
+    last = previous_close + change
+    if last <= 0:
+        return None
+
+    pct_match = re.search(r"\(\s*([+-]?\d+(?:\.\d+)?)\s*%", change_text)
+    change_pct = float(pct_match.group(1)) if pct_match else None
+    return PreciousMetalQuote(
+        name="Gold (MCX)",
+        last=last,
+        change=change,
+        change_pct=change_pct,
+        prev_close=previous_close,
+        unit="per 10g",
+        source="moneycontrol",
+        raw={
+            "last": last,
+            "change": change,
+            "change_pct": change_pct,
+            "prev_close": previous_close,
+        },
+    )
+
+
+def _extract_economictimes_gold(html: str) -> PreciousMetalQuote | None:
+    """Extract MCX gold contract quote fields from Economic Times HTML."""
+    if not re.search(r'class=["\']small\s+MCX["\']', html, re.I):
+        return None
+
+    def field_text(class_name: str) -> str | None:
+        match = re.search(
+            rf"<span\b[^>]*\bclass=[\"'][^\"']*\b{re.escape(class_name)}\b[^\"']*[\"'][^>]*>(.*?)</span>",
+            html,
+            re.I | re.S,
+        )
+        if not match:
+            return None
+        text = re.sub(r"<[^>]+>", "", match.group(1))
+        return unescape(text).strip()
+
+    last_text = field_text("commodityPrice")
+    previous_close_text = field_text("previousClosePrice")
+    if last_text is None:
+        return None
+
+    last = _parse_number(last_text)
+    previous_close = (
+        _parse_number(previous_close_text) if previous_close_text is not None else None
+    )
+    if last is None or last <= 0:
+        return None
+
+    change_text = field_text("perChng")
+    change_numbers = (
+        re.findall(r"[+-]?\d[\d,]*(?:\.\d+)?", change_text)
+        if change_text is not None
+        else []
+    )
+    if previous_close is not None:
+        change = last - previous_close
+    elif change_numbers:
+        change = _parse_number(change_numbers[0])
+        if change is not None and not change_numbers[0].startswith(("+", "-")):
+            if re.search(r"\bdownArrow\b", html, re.I):
+                change = -abs(change)
+            elif re.search(r"\bupArrow\b", html, re.I):
+                change = abs(change)
+            else:
+                change = None
+    else:
+        change = None
+
+    change_pct = None
+    if len(change_numbers) > 1:
+        change_pct = _parse_number(change_numbers[1])
+        if change_pct is not None and change is not None:
+            change_pct = abs(change_pct) if change >= 0 else -abs(change_pct)
+
+    expiry_match = re.search(r"\bExpiry:\s*([^|<]+)", html, re.I)
+    raw: dict[str, Any] = {"last": last, "source_url": ECONOMIC_TIMES_GOLD_URL}
+    if expiry_match:
+        raw["expiry"] = unescape(expiry_match.group(1)).strip()
+    if previous_close is not None:
+        raw["prev_close"] = previous_close
+    if change is not None:
+        raw["change"] = change
+    if change_pct is not None:
+        raw["change_pct"] = change_pct
+
+    open_text = field_text("openPrice")
+    open_price = _parse_number(open_text) if open_text is not None else None
+    return PreciousMetalQuote(
+        name="Gold (MCX)",
+        last=last,
+        change=change,
+        change_pct=change_pct,
+        prev_close=previous_close,
+        open_=open_price,
+        unit="per 10g",
+        source="Economic Times",
+        raw=raw,
+    )
 
 
 def _extract_gold_from_html(html: str) -> PreciousMetalQuote | None:
@@ -323,7 +463,7 @@ def _extract_silver_from_html(html: str) -> PreciousMetalQuote | None:
 
 def get_gold_price() -> PreciousMetalQuote:
     """
-    Fetch Gold price from Moneycontrol.
+    Fetch the MCX Gold price from Moneycontrol, with an Economic Times fallback.
 
     Returns:
         PreciousMetalQuote with gold price in INR per 10g
@@ -331,14 +471,30 @@ def get_gold_price() -> PreciousMetalQuote:
     Raises:
         RuntimeError: If fetch or parse fails.
     """
-    html = _fetch_html_with_retry(GOLD_URL)
-    gold = _extract_gold_from_html(html)
-    
-    if gold is None:
-        raise RuntimeError(
+    try:
+        html = _fetch_html_with_retry(GOLD_URL)
+        gold = _extract_gold_from_mcx_html(html) or _extract_gold_from_html(html)
+        if gold is not None:
+            return gold
+        moneycontrol_error = RuntimeError(
             "Could not extract Gold price from Moneycontrol. "
             "The page structure may have changed."
         )
+    except RuntimeError as error:
+        moneycontrol_error = error
+
+    try:
+        html = _fetch_html_with_retry(ECONOMIC_TIMES_GOLD_URL)
+    except RuntimeError as error:
+        raise RuntimeError(
+            f"{moneycontrol_error}; Economic Times fallback failed: {error}"
+        ) from error
+
+    gold = _extract_economictimes_gold(html)
+    if gold is None:
+        raise RuntimeError(
+            f"{moneycontrol_error}; could not extract MCX Gold from Economic Times."
+        ) from moneycontrol_error
     return gold
 
 
@@ -419,4 +575,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

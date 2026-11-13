@@ -10,14 +10,14 @@ from __future__ import annotations
 
 # 1 troy ounce = 31.1034768 grams (COMEX uses troy)
 GRAMS_PER_TROY_OZ = 31.1034768
-IMPORT_DUTY = 0.06   # 6%
+IMPORT_DUTY = 0.15   # 15%
 GST = 0.03           # 3% (on duty-inclusive value)
 GREEN = "\033[32m"
 RESET = "\033[0m"
 
 
 def add_duty_and_gst(price_inr: float) -> float:
-    """Apply Import Duty (6%) then GST (3%) on duty-inclusive value. Returns final price."""
+    """Apply Import Duty (15%) then GST (3%) on duty-inclusive value."""
     after_duty = price_inr * (1 + IMPORT_DUTY)
     return after_duty * (1 + GST)
 
@@ -85,7 +85,7 @@ def main() -> None:
     print(f"  Last:  ₹{last_inr:,.2f}")
     print(f"  Close: ₹{close_inr:,.2f}")
     print()
-    print("Final price (after Import Duty 6% + GST 3%):")
+    print("Final price (after Import Duty 15% + GST 3%):")
     print(f"  {GREEN}Last:  ₹{last_final:,.2f}{RESET}")
     print(f"  {GREEN}Close: ₹{close_final:,.2f}{RESET}")
     if gold.change is not None:
