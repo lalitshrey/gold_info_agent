@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass
+from html.parser import HTMLParser
 from typing import Any
 
 try:
@@ -147,6 +148,77 @@ def _extract_via_bs4(html: str) -> tuple[CommodityQuote | None, CommodityQuote |
     return gold, silver
 
 
+def _extract_via_html_parser(
+    html: str,
+) -> tuple[CommodityQuote | None, CommodityQuote | None]:
+    """Extract quote rows using the standard-library HTML parser."""
+    class TableRows(HTMLParser):
+        def __init__(self) -> None:
+            super().__init__()
+            self.rows: list[list[str]] = []
+            self.row: list[str] | None = None
+            self.cell: list[str] | None = None
+
+        def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+            if tag == "tr":
+                self.row = []
+            elif tag in {"td", "th"} and self.row is not None:
+                self.cell = []
+
+        def handle_endtag(self, tag: str) -> None:
+            if tag in {"td", "th"} and self.row is not None and self.cell is not None:
+                self.row.append(" ".join("".join(self.cell).split()))
+                self.cell = None
+            elif tag == "tr" and self.row is not None:
+                self.rows.append(self.row)
+                self.row = None
+                self.cell = None
+
+        def handle_data(self, data: str) -> None:
+            if self.cell is not None:
+                self.cell.append(data)
+
+    parser = TableRows()
+    parser.feed(html)
+    gold: CommodityQuote | None = None
+    silver: CommodityQuote | None = None
+
+    for cells in parser.rows:
+        if len(cells) < 7 or cells[0] not in {"COMEX Gold", "COMEX Silver"}:
+            continue
+        values = [_parse_number(value) for value in cells[1:7]]
+        last, change, change_pct, close, high, low = values
+        if last is None:
+            continue
+
+        quote = CommodityQuote(
+            name=cells[0],
+            last=last,
+            change=change,
+            change_pct=change_pct,
+            close=close,
+            high=high,
+            low=low,
+            last_trade=cells[7] if len(cells) > 7 else None,
+            source="comexlive.org",
+            raw={
+                "last": last,
+                "change": change,
+                "change_pct": change_pct,
+                "close": close,
+                "high": high,
+                "low": low,
+                "last_trade": cells[7] if len(cells) > 7 else None,
+            },
+        )
+        if cells[0] == "COMEX Gold":
+            gold = quote
+        else:
+            silver = quote
+
+    return gold, silver
+
+
 def _extract_via_regex(html: str) -> tuple[CommodityQuote | None, CommodityQuote | None]:
     """Fallback: extract Gold and Silver using regex on raw HTML."""
     gold: CommodityQuote | None = None
@@ -219,6 +291,12 @@ def get_gold_silver() -> tuple[CommodityQuote, CommodityQuote]:
 
     if BeautifulSoup is not None:
         gold, silver = _extract_via_bs4(html)
+    if gold is None or silver is None:
+        g2, s2 = _extract_via_html_parser(html)
+        if gold is None:
+            gold = g2
+        if silver is None:
+            silver = s2
     if gold is None or silver is None:
         g2, s2 = _extract_via_regex(html)
         if gold is None:

@@ -64,6 +64,11 @@ def create_usdinr_panel(usdinr) -> Panel:
     content = Text()
     content.append("USD/INR: ", style="bold white")
     content.append(f"₹{usdinr.rate:.4f}", style="bold green")
+
+    content.append(f"\nSource: {usdinr.source}", style="dim")
+    as_of = (usdinr.raw or {}).get("as_of")
+    if as_of:
+        content.append(f"\nUpdated: {as_of}", style="dim")
     
     if usdinr.change is not None:
         change_style = "green" if usdinr.change >= 0 else "red"
@@ -365,6 +370,11 @@ def main() -> None:
         try:
             console.log("[cyan]Fetching USD/INR from Moneycontrol...[/cyan]")
             usdinr = get_usdinr()
+            if usdinr.source != "moneycontrol":
+                console.log(
+                    f"[yellow]Moneycontrol unavailable; using dated reference rate "
+                    f"from {usdinr.source}.[/yellow]"
+                )
             
             console.log("[yellow]Fetching Gold & Silver from COMEX...[/yellow]")
             gold_comex, silver_comex = get_comexlive_gold_silver()
@@ -432,4 +442,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
