@@ -28,7 +28,7 @@
     </header>
 
     <form class="bg-white dark:bg-gray-800 rounded-lg shadow p-4 md:p-6 mb-6" method="get" action="/">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-4 items-end">
         <label class="block">
           <span class="block text-sm font-medium mb-1">Tickers (comma-separated)</span>
           <input id="tickers-input" name="tickers" list="tickers-datalist" type="text" value="{{ tickers }}" placeholder="e.g., RELIANCE,TCS,INFY" class="w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 px-3 py-2" oninput="updateSuggestions(this)">
@@ -59,14 +59,72 @@
           <span class="block text-sm font-medium mb-1">Days back (Google)</span>
           <input name="days" type="number" min="1" max="30" value="{{ days }}" class="w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 px-3 py-2">
         </label>
+        <label class="block">
+          <span class="block text-sm font-medium mb-1">Price movement since</span>
+          <input name="since" type="date" value="{{ price_since }}" max="{{ max_date }}" class="w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 px-3 py-2">
+        </label>
         <div>
           <button type="submit" class="inline-flex items-center justify-center rounded-md bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 w-full md:w-auto">Search</button>
         </div>
       </div>
+      <p class="mt-3 text-xs text-gray-500 dark:text-gray-400">Price change compares Yahoo Finance’s latest quote with the last available NSE close on or before the selected date.</p>
     </form>
+
+    {% if invalid_symbols %}
+      <div class="mb-4 rounded-lg border border-red-200 bg-red-50 dark:border-red-900 dark:bg-red-950/40 p-3 text-sm text-red-800 dark:text-red-200" role="alert">
+        These symbols were not found in the stock database and were skipped: <strong>{{ ", ".join(invalid_symbols) }}</strong>
+      </div>
+    {% endif %}
 
     {% if symbols %}
       <div class="mb-3 text-sm text-gray-700 dark:text-gray-300">Showing results for: <span class="font-medium">{{ ", ".join(symbols) }}</span> ({{ articles|length }})</div>
+    {% endif %}
+
+    {% if price_error %}
+      <div class="mb-4 rounded-lg border border-amber-200 bg-amber-50 dark:border-amber-900 dark:bg-amber-950/40 p-3 text-sm text-amber-800 dark:text-amber-200" role="alert">{{ price_error }}</div>
+    {% endif %}
+
+    {% if prices %}
+      <section class="mb-7" aria-labelledby="price-movement-heading">
+        <div class="mb-3 flex flex-wrap items-baseline justify-between gap-2">
+          <h2 id="price-movement-heading" class="text-lg font-semibold">Selected stock price movement</h2>
+          <span class="text-xs text-gray-500 dark:text-gray-400">Baseline date: {{ price_since }} · Yahoo Finance</span>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
+          {% for quote in prices %}
+            <article class="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-4">
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <h3 class="font-semibold">{{ quote.symbol }}</h3>
+                  {% if quote.error %}
+                    <p class="mt-2 text-sm text-amber-700 dark:text-amber-300">Quote unavailable: {{ quote.error }}</p>
+                  {% else %}
+                    <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Close on {{ quote.baseline_date }}: {{ quote.currency }} {{ '%.2f'|format(quote.baseline_close) }}</p>
+                  {% endif %}
+                </div>
+                {% if not quote.error %}
+                  {% if quote.change > 0 %}
+                    <span class="rounded-full bg-green-100 px-2.5 py-1 text-xs font-semibold text-green-800 dark:bg-green-900/40 dark:text-green-300">▲ {{ quote.currency }} {{ '%.2f'|format(quote.change) }} ({{ '%+.2f'|format(quote.change_pct) }}%)</span>
+                  {% elif quote.change < 0 %}
+                    <span class="rounded-full bg-red-100 px-2.5 py-1 text-xs font-semibold text-red-800 dark:bg-red-900/40 dark:text-red-300">▼ {{ quote.currency }} {{ '%.2f'|format(quote.change) }} ({{ '%+.2f'|format(quote.change_pct) }}%)</span>
+                  {% else %}
+                    <span class="rounded-full bg-gray-100 px-2.5 py-1 text-xs font-semibold text-gray-700 dark:bg-gray-700 dark:text-gray-200">— No change</span>
+                  {% endif %}
+                {% endif %}
+              </div>
+              {% if not quote.error %}
+                <div class="mt-4 text-xl font-semibold">{{ quote.currency }} {{ '%.2f'|format(quote.latest_price) }}</div>
+                <div class="mt-1 text-xs text-gray-500 dark:text-gray-400">Latest reported quote · comparison is informational, not a buy/sell recommendation.</div>
+              {% endif %}
+            </article>
+          {% endfor %}
+        </div>
+      </section>
+    {% elif symbols and not price_error %}
+      <section class="mb-7 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-4" aria-labelledby="price-movement-heading">
+        <h2 id="price-movement-heading" class="font-semibold">Selected stock price movement</h2>
+        <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">No Yahoo Finance price quotes were returned for this selection.</p>
+      </section>
     {% endif %}
 
     <div class="grid grid-cols-1 gap-4">

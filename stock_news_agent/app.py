@@ -1,4 +1,5 @@
 import argparse
+from concurrent.futures import ThreadPoolExecutor
 import datetime as dt
 import json
 from pathlib import Path
@@ -7,6 +8,7 @@ from typing import Dict, List, Optional, Set
 import feedparser
 import re
 import html as html_lib
+import logging
 from urllib.parse import quote_plus
 import httpx
 import trafilatura
@@ -25,6 +27,8 @@ from stock_service import (
     search_nifty_stocks, validate_nifty_symbols, get_nifty_sectors,
     get_nifty_stats, stock_service
 )
+
+_logger = logging.getLogger(__name__)
 
 
 # ---------- Utilities ----------
@@ -244,6 +248,90 @@ def get_news(
     return collected
 
 
+def _fetch_yahoo_price_change(symbol: str, since: dt.date) -> Dict:
+    """Compare the latest Yahoo quote with the latest close on/before `since`."""
+    yahoo_symbol = f"{symbol}.NS"
+    start = dt.datetime.combine(
+        since - dt.timedelta(days=10), dt.time.min, tzinfo=dt.timezone.utc
+    )
+    end = dt.datetime.now(dt.timezone.utc) + dt.timedelta(days=1)
+    url = f"https://query1.finance.yahoo.com/v8/finance/chart/{quote_plus(yahoo_symbol)}"
+    response = httpx.get(
+        url,
+        params={
+            "period1": int(start.timestamp()),
+            "period2": int(end.timestamp()),
+            "interval": "1d",
+        },
+        headers={"User-Agent": "Mozilla/5.0"},
+        timeout=15,
+    )
+    response.raise_for_status()
+    chart = response.json().get("chart", {})
+    if chart.get("error"):
+        raise ValueError(
+            str(chart["error"].get("description") or "Yahoo Finance quote unavailable")
+        )
+    results = chart.get("result") or []
+    if not results:
+        raise ValueError("Yahoo Finance returned no price history")
+
+    result = results[0]
+    timestamps = result.get("timestamp") or []
+    quote_data = (result.get("indicators", {}).get("quote") or [{}])[0]
+    closes = quote_data.get("close") or []
+    history = [
+        (dt.datetime.fromtimestamp(stamp, tz=dt.timezone.utc).date(), float(close))
+        for stamp, close in zip(timestamps, closes)
+        if close is not None
+    ]
+    base_points = [point for point in history if point[0] <= since]
+    if not base_points:
+        raise ValueError(f"No closing price available on or before {since.isoformat()}")
+
+    baseline_date, baseline_close = base_points[-1]
+    meta = result.get("meta", {})
+    latest_price = meta.get("regularMarketPrice")
+    if latest_price is None and history:
+        latest_price = history[-1][1]
+    if latest_price is None:
+        raise ValueError("Yahoo Finance returned no latest price")
+
+    latest_price = float(latest_price)
+    change = latest_price - baseline_close
+    return {
+        "symbol": symbol,
+        "yahoo_symbol": yahoo_symbol,
+        "currency": meta.get("currency") or "INR",
+        "baseline_date": baseline_date.isoformat(),
+        "baseline_close": baseline_close,
+        "latest_price": latest_price,
+        "change": change,
+        "change_pct": change / baseline_close * 100 if baseline_close else None,
+        "market_time": meta.get("regularMarketTime"),
+    }
+
+
+def _safe_yahoo_price_change(symbol: str, since: dt.date) -> Dict:
+    try:
+        return _fetch_yahoo_price_change(symbol, since)
+    except Exception as error:
+        _logger.warning("Could not fetch Yahoo Finance quote for %s: %s", symbol, error)
+        return {"symbol": symbol, "error": str(error)}
+
+
+def get_stock_price_changes(symbols: List[str], since: dt.date) -> List[Dict]:
+    """Fetch price movements for selected NSE symbols, tolerating source errors."""
+    if not symbols:
+        return []
+    with ThreadPoolExecutor(max_workers=min(8, len(symbols))) as executor:
+        return list(
+            executor.map(
+                lambda symbol: _safe_yahoo_price_change(symbol, since), symbols
+            )
+        )
+
+
 # ---------- FastAPI ----------
 api = FastAPI(title="Stock News Agent", version="0.1.0")
 
@@ -288,17 +376,34 @@ def index(
         le=30,
         description="Days back for Google News",
     ),
+    since: Optional[dt.date] = Query(
+        None,
+        description="Compare the latest quote with the last close on or before this date",
+    ),
 ):
     symbols: List[str] = []
+    invalid_symbols: List[str] = []
     articles: List[Dict] = []
+    prices: List[Dict] = []
+    today = dt.datetime.now(ZoneInfo("Asia/Kolkata")).date()
+    price_since = since or (today - dt.timedelta(days=1))
+    price_error = ""
+    if price_since > today:
+        price_error = "Choose today or an earlier date for price comparison."
     if tickers:
-        symbols = [t.strip().upper() for t in tickers.split(",") if t.strip()]
+        requested_symbols = list(
+            dict.fromkeys(t.strip().upper() for t in tickers.split(",") if t.strip())
+        )
+        if requested_symbols:
+            symbols, invalid_symbols = validate_nifty_symbols(requested_symbols)
         if symbols:
             articles = get_news(
                 symbols,
                 per_source_limit=limit,
                 google_days=days,
             )
+            if not price_error:
+                prices = get_stock_price_changes(symbols, price_since)
     return templates.TemplateResponse(
         "index.html",
         {
@@ -307,7 +412,12 @@ def index(
             "limit": limit,
             "days": days,
             "symbols": symbols,
+            "invalid_symbols": invalid_symbols,
             "articles": articles,
+            "prices": prices,
+            "price_since": price_since.isoformat(),
+            "price_error": price_error,
+            "max_date": today.isoformat(),
         },
     )
 

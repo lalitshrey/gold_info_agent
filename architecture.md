@@ -63,17 +63,24 @@ aggregation modules; it does not call the MySQL-backed `app.py` news flow.
 
 ### Entry point and flow
 
-Run `python precious_metals_dashboard.py` from the repository root.
-`precious_metals_dashboard.py` coordinates the data sources, converters, and
-Rich terminal UI:
+Run `python precious_metals_dashboard.py` from the repository root after
+setting `PRECIOUS_DASHBOARD_USERNAME`, `PRECIOUS_DASHBOARD_PASSWORD`, and
+`PRECIOUS_DASHBOARD_SECRET_KEY`. The FastAPI app serves an authenticated browser
+dashboard at `http://127.0.0.1:8002/`:
 
 1. Fetch USD/INR through `get_usdinr_moneycontrol.py`.
 2. Fetch COMEX gold and silver through `get_gold_silver_comexlive.py`.
 3. Fetch the MCX gold contract and Moneycontrol silver through
    `get_gold_silver_moneycontrol.py`.
 4. Convert COMEX values to INR per 10 grams (gold) and per kilogram (silver),
-   apply the configured duty/GST calculations, and render quote panels,
-   comparison tables, and summary tables.
+   apply the configured duty/GST calculations, and return the latest snapshot
+   to the browser dashboard.
+
+The dashboard has Overview, Gold, Silver, and Sources sections, an on-demand
+refresh action, and login/logout backed by signed session cookies. Set
+`PRECIOUS_DASHBOARD_COOKIE_SECURE=1` when serving over HTTPS. Quote collection
+runs outside the async event loop and provider failures are reported separately
+so available sources can still be shown.
 
 The MCX gold panel labels the quote provider. It tries Moneycontrol first and
 falls back to the Economic Times MCX gold page if Moneycontrol is blocked or
@@ -114,9 +121,13 @@ The news request flow is:
 5. Return JSON or render the web template.
 
 The `/news` endpoint and the `news` CLI command validate symbols against the
-Nifty stocks database. The web page route also calls the news pipeline, while
-the other `/stocks/...` endpoints provide stock lookup, search, sector,
-statistics, and symbol validation.
+Nifty stocks database. The web page route also validates submitted symbols and
+calls the news pipeline, while the other `/stocks/...` endpoints provide stock
+lookup, search, sector, statistics, and symbol validation. For selected stocks,
+the web page can show Yahoo Finance's latest reported quote against the last
+available NSE close on or before a user-selected date. It displays absolute and
+percentage movement as quote data; the app does not generate buy/sell
+recommendations.
 
 `stock_news_agent/database.py` creates a SQLAlchemy connection to MySQL and
 defines the `nifty_stocks` table. Connection settings are read from

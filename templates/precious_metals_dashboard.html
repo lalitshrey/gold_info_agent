@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Precious Metals | Market Desk</title>
+  <style>
+    :root { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #19251f; background: #f5f6f2; font-synthesis: none; }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    button, a { font: inherit; }
+    .topbar { position: sticky; top: 0; z-index: 5; background: #fbfcf9f2; border-bottom: 1px solid #e3e8df; backdrop-filter: blur(16px); }
+    .bar-inner { max-width: 1240px; min-height: 74px; margin: auto; padding: 12px 26px; display: flex; align-items: center; gap: 28px; }
+    .brand { display: flex; align-items: center; gap: 11px; color: inherit; text-decoration: none; white-space: nowrap; }
+    .brand-mark { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 13px; color: #fff; background: #244c3b; font-size: 20px; }
+    .brand-name { font-weight: 750; letter-spacing: -.03em; }
+    nav { display: flex; align-items: center; gap: 7px; flex: 1; }
+    nav a { color: #66736c; padding: 10px 12px; text-decoration: none; border-radius: 9px; font-size: 14px; font-weight: 600; }
+    nav a:hover, nav a:focus-visible { color: #244c3b; background: #edf2ec; outline: none; }
+    .actions { display: flex; align-items: center; gap: 9px; }
+    .button { min-height: 40px; padding: 9px 13px; border: 1px solid #d9e1d8; border-radius: 10px; background: #fff; color: #30453a; cursor: pointer; font-size: 13px; font-weight: 700; }
+    .button:hover { background: #f0f4ef; }
+    .button.primary { color: #fff; background: #244c3b; border-color: #244c3b; }
+    .button.primary:hover { background: #193c2d; }
+    .button:disabled { opacity: .65; cursor: wait; }
+    main { max-width: 1240px; margin: auto; padding: 42px 26px 70px; }
+    .hero { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 27px; }
+    .eyebrow { margin: 0 0 10px; color: #78857d; font-size: 11px; letter-spacing: .14em; font-weight: 800; text-transform: uppercase; }
+    h1 { margin: 0; font-size: clamp(30px, 4vw, 43px); line-height: 1.08; letter-spacing: -.055em; }
+    .subtitle { color: #758178; margin: 11px 0 0; }
+    .live-chip { display: inline-flex; align-items: center; gap: 8px; padding: 9px 12px; border: 1px solid #dce6dc; background: #eef5ee; border-radius: 999px; color: #3d6349; white-space: nowrap; font-size: 12px; font-weight: 700; }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: #4b9b61; }
+    .status { min-height: 23px; margin: 0 0 20px; color: #758178; font-size: 13px; }
+    .status.error { color: #ad403b; }
+    .section { scroll-margin-top: 94px; margin-top: 35px; }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 12px; margin-bottom: 15px; }
+    h2 { margin: 0; font-size: 20px; letter-spacing: -.035em; }
+    .section-note { color: #849087; font-size: 12px; }
+    .grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 14px; }
+    .card { min-width: 0; padding: 20px; background: #fff; border: 1px solid #e5e9e2; border-radius: 15px; box-shadow: 0 5px 18px #1e33230a; }
+    .summary-card { grid-column: span 3; }
+    .wide-card { grid-column: span 6; }
+    .full-card { grid-column: span 12; }
+    .card-label { color: #7d8981; font-size: 12px; font-weight: 650; }
+    .value { margin-top: 10px; font-size: clamp(22px, 2.5vw, 29px); line-height: 1.1; font-weight: 760; letter-spacing: -.05em; overflow-wrap: anywhere; }
+    .subvalue { margin-top: 8px; color: #77837b; font-size: 12px; }
+    .trend { display: inline-flex; gap: 5px; margin-top: 12px; font-size: 12px; font-weight: 700; }
+    .positive { color: #37844f; } .negative { color: #bd4d46; }
+    .quote-top { display: flex; align-items: start; justify-content: space-between; gap: 12px; }
+    .metal-icon { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 12px; background: #f7f1df; font-size: 19px; }
+    .silver-icon { background: #edf2f4; }
+    .quote-main { margin-top: 20px; display: flex; justify-content: space-between; gap: 18px; align-items: end; }
+    .quote-main .value { margin: 0; }
+    .quote-sub { color: #78847c; font-size: 12px; line-height: 1.6; text-align: right; }
+    .metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; padding-top: 18px; margin-top: 18px; border-top: 1px solid #edf0eb; }
+    .metric-label { color: #8a958d; font-size: 11px; }
+    .metric-value { margin-top: 6px; font-size: 14px; font-weight: 700; }
+    .compare { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .compare th { color: #849087; font-size: 11px; font-weight: 700; text-align: left; text-transform: uppercase; letter-spacing: .06em; }
+    .compare th, .compare td { padding: 13px 10px; border-bottom: 1px solid #edf0eb; }
+    .compare tr:last-child td { border-bottom: 0; }
+    .compare td:not(:first-child), .compare th:not(:first-child) { text-align: right; }
+    .metal-name { font-weight: 700; white-space: nowrap; }
+    .source-list { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 14px; }
+    .source-tag { padding: 8px 10px; border: 1px solid #e5eae3; border-radius: 8px; color: #607067; background: #fafbf9; font-size: 12px; }
+    .notice { grid-column: span 12; padding: 17px; border: 1px solid #f0dbbd; border-radius: 12px; color: #8d6230; background: #fff9ed; font-size: 13px; line-height: 1.5; }
+    .source-detail { margin-top: 11px; color: #7d8981; font-size: 12px; }
+    footer { display: flex; justify-content: space-between; gap: 12px; padding-top: 24px; margin-top: 35px; border-top: 1px solid #e4e9e2; color: #849087; font-size: 11px; }
+    @media (max-width: 850px) { .bar-inner { flex-wrap: wrap; gap: 10px 18px; } nav { order: 3; flex-basis: 100%; overflow-x: auto; } nav a { padding: 8px 10px; white-space: nowrap; } .summary-card { grid-column: span 6; } }
+    @media (max-width: 600px) { .bar-inner { padding: 10px 14px; } .brand-name { font-size: 14px; } .actions { margin-left: auto; } .actions .button { padding: 8px 10px; font-size: 12px; } main { padding: 29px 14px 48px; } .hero { align-items: start; flex-direction: column; } .summary-card, .wide-card { grid-column: span 12; } .full-card { overflow-x: auto; } .compare { min-width: 570px; } footer { flex-direction: column; } }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="bar-inner">
+      <a class="brand" href="#overview" aria-label="Precious metals dashboard home">
+        <span class="brand-mark" aria-hidden="true">◈</span><span class="brand-name">Market Desk</span>
+      </a>
+      <nav aria-label="Dashboard sections">
+        <a href="#overview">Overview</a><a href="#gold">Gold</a><a href="#silver">Silver</a><a href="#sources">Sources</a>
+      </nav>
+      <div class="actions">
+        <button id="refresh-button" class="button primary" type="button">↻ <span>Refresh</span></button>
+        <form method="post" action="/logout"><button class="button" type="submit">Sign out</button></form>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section id="overview" class="hero">
+      <div><p class="eyebrow">Precious metals · India</p><h1>Market overview</h1><p class="subtitle">International benchmarks, converted prices, and Indian market quotes.</p></div>
+      <div class="live-chip"><span class="dot"></span> Live source data</div>
+    </section>
+    <p id="status" class="status" aria-live="polite">Loading market data…</p>
+
+    <section class="grid" aria-label="Market summary">
+      <article class="card summary-card"><div class="card-label">Gold · market quote</div><div id="summary-gold" class="value">—</div><div class="subvalue">MCX · per 10 grams</div></article>
+      <article class="card summary-card"><div class="card-label">Silver · market quote</div><div id="summary-silver" class="value">—</div><div class="subvalue">Per kilogram</div></article>
+      <article class="card summary-card"><div class="card-label">Gold · COMEX after tax</div><div id="summary-gold-comex" class="value">—</div><div class="subvalue">Converted to INR per 10 grams</div></article>
+      <article class="card summary-card"><div class="card-label">Silver · COMEX after tax</div><div id="summary-silver-comex" class="value">—</div><div class="subvalue">Converted to INR per kilogram</div></article>
+    </section>
+
+    <section id="gold" class="section" aria-labelledby="gold-heading">
+      <div class="section-heading"><h2 id="gold-heading">Gold</h2><span class="section-note">COMEX benchmark and MCX contract quote</span></div>
+      <div class="grid">
+        <article class="card wide-card">
+          <div class="quote-top"><div><div class="card-label">COMEX · USD per troy ounce</div><div id="gold-comex-last" class="value">—</div></div><span class="metal-icon" aria-hidden="true">✦</span></div>
+          <div id="gold-comex-change" class="trend"></div>
+          <div class="metrics"><div><div class="metric-label">High</div><div id="gold-comex-high" class="metric-value">—</div></div><div><div class="metric-label">Low</div><div id="gold-comex-low" class="metric-value">—</div></div><div><div class="metric-label">Close</div><div id="gold-comex-close" class="metric-value">—</div></div></div>
+          <div id="gold-comex-trade" class="source-detail"></div>
+        </article>
+        <article class="card wide-card">
+          <div class="quote-top"><div><div class="card-label">Indian market quote · per 10 grams</div><div id="gold-mcx-last" class="value">—</div></div><span class="metal-icon" aria-hidden="true">₹</span></div>
+          <div id="gold-mcx-source" class="source-detail">MCX contract quote</div>
+          <div class="metrics"><div><div class="metric-label">Change</div><div id="gold-mcx-change" class="metric-value">—</div></div><div><div class="metric-label">High</div><div id="gold-mcx-high" class="metric-value">—</div></div><div><div class="metric-label">Low</div><div id="gold-mcx-low" class="metric-value">—</div></div></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="silver" class="section" aria-labelledby="silver-heading">
+      <div class="section-heading"><h2 id="silver-heading">Silver</h2><span class="section-note">COMEX benchmark and Indian market quote</span></div>
+      <div class="grid">
+        <article class="card wide-card">
+          <div class="quote-top"><div><div class="card-label">COMEX · USD per troy ounce</div><div id="silver-comex-last" class="value">—</div></div><span class="metal-icon silver-icon" aria-hidden="true">✦</span></div>
+          <div id="silver-comex-change" class="trend"></div>
+          <div class="metrics"><div><div class="metric-label">High</div><div id="silver-comex-high" class="metric-value">—</div></div><div><div class="metric-label">Low</div><div id="silver-comex-low" class="metric-value">—</div></div><div><div class="metric-label">Close</div><div id="silver-comex-close" class="metric-value">—</div></div></div>
+          <div id="silver-comex-trade" class="source-detail"></div>
+        </article>
+        <article class="card wide-card">
+          <div class="quote-top"><div><div class="card-label">Indian market quote · per kilogram</div><div id="silver-mcx-last" class="value">—</div></div><span class="metal-icon silver-icon" aria-hidden="true">₹</span></div>
+          <div id="silver-mcx-source" class="source-detail">Moneycontrol</div>
+          <div class="metrics"><div><div class="metric-label">Change</div><div id="silver-mcx-change" class="metric-value">—</div></div><div><div class="metric-label">High</div><div id="silver-mcx-high" class="metric-value">—</div></div><div><div class="metric-label">Low</div><div id="silver-mcx-low" class="metric-value">—</div></div></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="sources" class="section" aria-labelledby="sources-heading">
+      <div class="section-heading"><h2 id="sources-heading">Price comparison & sources</h2><span class="section-note">COMEX conversions are indicative benchmarks</span></div>
+      <div class="grid">
+        <article class="card full-card">
+          <table class="compare"><thead><tr><th>Metal</th><th>COMEX converted, before tax</th><th>COMEX converted, after tax</th><th>Indian market quote</th></tr></thead><tbody>
+            <tr><td class="metal-name">Gold · per 10g</td><td id="gold-before-tax">—</td><td id="gold-after-tax">—</td><td id="gold-market-compare">—</td></tr>
+            <tr><td class="metal-name">Silver · per kg</td><td id="silver-before-tax">—</td><td id="silver-after-tax">—</td><td id="silver-market-compare">—</td></tr>
+          </tbody></table>
+        </article>
+        <article class="card wide-card"><div class="card-label">Currency conversion</div><div id="usdinr-rate" class="value">—</div><div id="usdinr-source" class="source-detail">USD/INR source</div><div id="usdinr-range" class="source-detail"></div></article>
+        <article class="card wide-card"><div class="card-label">Data providers</div><div class="source-list"><span class="source-tag">COMEX Live</span><span class="source-tag">Moneycontrol</span><span class="source-tag">Economic Times fallback</span><span class="source-tag">ExchangeRate-API fallback</span></div><div class="source-detail">The local market quote and the converted COMEX benchmark are separate price sources.</div></article>
+        <div id="source-errors" class="notice" hidden></div>
+      </div>
+    </section>
+
+    <footer><span>Gold conversion includes 15% import duty and 3% GST. Silver conversion includes 6% duty and 3% GST.</span><span id="updated-at">Waiting for first update</span></footer>
+  </main>
+
+  <script>
+    const statusNode = document.getElementById("status");
+    const refreshButton = document.getElementById("refresh-button");
+    const byId = (id) => document.getElementById(id);
+    const number = (value, decimals = 2) => value == null || !Number.isFinite(Number(value)) ? "—" : Number(value).toLocaleString("en-IN", {minimumFractionDigits: decimals, maximumFractionDigits: decimals});
+    const rupees = (value, decimals = 2) => value == null ? "—" : `₹${number(value, decimals)}`;
+    const dollars = (value, decimals = 2) => value == null ? "—" : `$${number(value, decimals)}`;
+    const put = (id, value) => { byId(id).textContent = value == null || value === "" ? "—" : value; };
+    function renderChange(id, change, pct, decimals) {
+      const node = byId(id);
+      if (change == null) { node.textContent = "No daily change reported"; node.className = "trend"; return; }
+      node.className = `trend ${Number(change) >= 0 ? "positive" : "negative"}`;
+      node.textContent = `${Number(change) >= 0 ? "▲" : "▼"} ${dollars(Math.abs(Number(change)), decimals)}${pct == null ? "" : ` (${number(pct, 2)}%)`}`;
+    }
+    function renderMarketQuote(prefix, quote, unit) {
+      if (!quote) { put(`${prefix}-last`, "Unavailable"); return; }
+      put(`${prefix}-last`, rupees(quote.last));
+      put(`${prefix}-source`, quote.source || "Market quote");
+      put(`${prefix}-change`, quote.change == null ? "—" : `${rupees(Math.abs(quote.change))}${Number(quote.change) >= 0 ? " ▲" : " ▼"}${quote.change_pct == null ? "" : ` (${number(quote.change_pct)}%)`}`);
+      put(`${prefix}-high`, rupees(quote.high));
+      put(`${prefix}-low`, rupees(quote.low));
+    }
+    function renderData(data) {
+      const gold = data.gold_comex;
+      const silver = data.silver_comex;
+      const goldMc = data.mcx_gold;
+      const silverMc = data.mcx_silver;
+      const prices = data.prices || {};
+      const fx = data.usdinr;
+
+      put("summary-gold", rupees(goldMc?.last));
+      put("summary-silver", rupees(silverMc?.last));
+      put("summary-gold-comex", rupees(prices.gold_comex_after_tax));
+      put("summary-silver-comex", rupees(prices.silver_comex_after_tax));
+
+      put("gold-comex-last", gold ? dollars(gold.last) : "Unavailable");
+      put("gold-comex-high", gold ? dollars(gold.high) : "—"); put("gold-comex-low", gold ? dollars(gold.low) : "—"); put("gold-comex-close", gold ? dollars(gold.close) : "—");
+      renderChange("gold-comex-change", gold?.change, gold?.change_pct, 2); put("gold-comex-trade", gold?.last_trade ? `Last trade: ${gold.last_trade}` : "");
+      put("silver-comex-last", silver ? dollars(silver.last, 3) : "Unavailable");
+      put("silver-comex-high", silver ? dollars(silver.high, 3) : "—"); put("silver-comex-low", silver ? dollars(silver.low, 3) : "—"); put("silver-comex-close", silver ? dollars(silver.close, 3) : "—");
+      renderChange("silver-comex-change", silver?.change, silver?.change_pct, 3); put("silver-comex-trade", silver?.last_trade ? `Last trade: ${silver.last_trade}` : "");
+      renderMarketQuote("gold-mcx", goldMc, "per 10g"); renderMarketQuote("silver-mcx", silverMc, "per kg");
+
+      put("gold-before-tax", rupees(prices.gold_comex_inr)); put("gold-after-tax", rupees(prices.gold_comex_after_tax)); put("gold-market-compare", rupees(goldMc?.last));
+      put("silver-before-tax", rupees(prices.silver_comex_inr)); put("silver-after-tax", rupees(prices.silver_comex_after_tax)); put("silver-market-compare", rupees(silverMc?.last));
+      put("usdinr-rate", fx ? `₹${number(fx.rate, 4)} per USD` : "Unavailable"); put("usdinr-source", fx?.source || "USD/INR source unavailable");
+      const range = fx?.low != null || fx?.high != null ? `Day range: ${number(fx.low, 4)} – ${number(fx.high, 4)}` : (fx?.raw?.as_of ? `Reference rate updated: ${fx.raw.as_of}` : "");
+      put("usdinr-range", range);
+
+      const errors = Object.entries(data.errors || {});
+      const errorBox = byId("source-errors");
+      errorBox.hidden = !errors.length;
+      errorBox.textContent = errors.length ? `Some sources could not be loaded: ${errors.map(([source, message]) => `${source}: ${message}`).join(" · ")}` : "";
+      const updated = data.fetched_at ? new Date(data.fetched_at).toLocaleString() : "just now";
+      put("updated-at", `Updated ${updated}`);
+      statusNode.className = `status${errors.length ? " error" : ""}`;
+      statusNode.textContent = errors.length ? "Market data loaded with some unavailable sources." : "All market sources updated.";
+    }
+    async function loadData(refresh = false) {
+      refreshButton.disabled = true;
+      statusNode.className = "status";
+      statusNode.textContent = refresh ? "Refreshing quotes from market sources…" : "Loading market data…";
+      try {
+        const response = await fetch(refresh ? "/api/refresh" : "/api/data", {method: refresh ? "POST" : "GET", headers: {Accept: "application/json"}});
+        const data = await response.json();
+        if (response.status === 401) { window.location.assign("/login"); return; }
+        if (!response.ok) throw new Error(data.detail || `Request failed (${response.status})`);
+        renderData(data);
+      } catch (error) {
+        statusNode.className = "status error";
+        statusNode.textContent = `Could not load market data: ${error.message}`;
+      } finally { refreshButton.disabled = false; }
+    }
+    refreshButton.addEventListener("click", () => loadData(true));
+    loadData();
+  </script>
+</body>
+</html>
